@@ -22,179 +22,177 @@ export default function Works() {
 
   return (
     <div className="min-h-screen bg-gray-100">
-      {/* Navigation Bar */}
-      <header className="bg-white shadow-sm sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <div className="flex justify-between items-center">
-            <div className="flex items-center space-x-2">
-              <Link to="/" className="flex items-center space-x-2">
-                <div className="w-10 h-10 rounded-full bg-amber-600 flex items-center justify-center text-white font-bold">
-                  JR
-                </div>
-                <span className="text-xl font-semibold">Jose Rizal</span>
-              </Link>
-            </div>
-            
-            {/* Desktop Navigation */}
-            <nav className="hidden md:flex space-x-4">
-              <Link to="/" className="text-gray-700 hover:text-amber-600 font-medium px-3 py-2">
-                Home
-              </Link>
-              <Link to="/works" className="text-amber-600 font-medium px-3 py-2">
-                Works
-              </Link>
-
-              {/* Novels Dropdown */}
-              <Menu as="div" className="relative">
-                <Menu.Button className="text-gray-700 hover:text-amber-600 font-medium px-3 py-2 flex items-center">
-                  Novels
-                  <ChevronDownIcon className="ml-1 h-5 w-5" aria-hidden="true" />
-                </Menu.Button>
-                <Transition
-                  as={Fragment}
-                  enter="transition ease-out duration-100"
-                  enterFrom="transform opacity-0 scale-95"
-                  enterTo="transform opacity-100 scale-100"
-                  leave="transition ease-in duration-75"
-                  leaveFrom="transform opacity-100 scale-100"
-                  leaveTo="transform opacity-0 scale-95"
-                >
-                  <Menu.Items className="absolute z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                    <div className="py-1">
-                      <Menu.Item>
-                        {({ active }) => (
-                          <Link
-                            to="/novels/noli-me-tangere"
-                            className={classNames(
-                              active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                              'block px-4 py-2 text-sm'
-                            )}
-                          >
-                            Noli Me Tangere
-                          </Link>
-                        )}
-                      </Menu.Item>
-                      <Menu.Item>
-                        {({ active }) => (
-                          <Link
-                            to="/novels/el-filibusterismo"
-                            className={classNames(
-                              active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                              'block px-4 py-2 text-sm'
-                            )}
-                          >
-                            El Filibusterismo
-                          </Link>
-                        )}
-                      </Menu.Item>
-                    </div>
-                  </Menu.Items>
-                </Transition>
-              </Menu>
-
-              {/* About Dropdown */}
-              <Menu as="div" className="relative">
-                <Menu.Button className="text-gray-700 hover:text-amber-600 font-medium px-3 py-2 flex items-center">
-                  About
-                  <ChevronDownIcon className="ml-1 h-5 w-5" aria-hidden="true" />
-                </Menu.Button>
-                <Transition
-                  as={Fragment}
-                  enter="transition ease-out duration-100"
-                  enterFrom="transform opacity-0 scale-95"
-                  enterTo="transform opacity-100 scale-100"
-                  leave="transition ease-in duration-75"
-                  leaveFrom="transform opacity-100 scale-100"
-                  leaveTo="transform opacity-0 scale-95"
-                >
-                  <Menu.Items className="absolute z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                    <div className="py-1">
-                      <Menu.Item>
-                        {({ active }) => (
-                          <Link
-                            to="/about/biography"
-                            className={classNames(
-                              active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                              'block px-4 py-2 text-sm'
-                            )}
-                          >
-                            Biography
-                          </Link>
-                        )}
-                      </Menu.Item>
-                      <Menu.Item>
-                        {({ active }) => (
-                          <Link
-                            to="/about/timeline"
-                            className={classNames(
-                              active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                              'block px-4 py-2 text-sm'
-                            )}
-                          >
-                            Timeline
-                          </Link>
-                        )}
-                      </Menu.Item>
-                      <Menu.Item>
-                        {({ active }) => (
-                          <Link
-                            to="/about/political-thought"
-                            className={classNames(
-                              active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                              'block px-4 py-2 text-sm'
-                            )}
-                          >
-                            Political Thought
-                          </Link>
-                        )}
-                      </Menu.Item>
-                      <Menu.Item>
-                        {({ active }) => (
-                          <Link
-                            to="/about/legacy"
-                            className={classNames(
-                              active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                              'block px-4 py-2 text-sm'
-                            )}
-                          >
-                            Legacy
-                          </Link>
-                        )}
-                      </Menu.Item>
-                      <Menu.Item>
-                        {({ active }) => (
-                          <Link
-                            to="/about/quotes"
-                            className={classNames(
-                              active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                              'block px-4 py-2 text-sm'
-                            )}
-                          >
-                            Quotes
-                          </Link>
-                        )}
-                      </Menu.Item>
-                      <Menu.Item>
-                        {({ active }) => (
-                          <Link
-                            to="/about/interview"
-                            className={classNames(
-                              active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                              'block px-4 py-2 text-sm'
-                            )}
-                          >
-                            Interview and Opinions
-                          </Link>
-                        )}
-                      </Menu.Item>
-                    </div>
-                  </Menu.Items>
-                </Transition>
-              </Menu>
-            </nav>
-          </div>
-        </div>
-      </header>
+           <header className="bg-[#e8d8b5] shadow-lg sticky top-0 z-50 border-b-2 border-[#6b4423]">
+             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex justify-between items-center">
+               <div className="flex items-center space-x-2">
+                 <img src="/images/profile.jpg" alt="Jose Rizal" className="w-12 h-12 rounded-full border-2 border-[#5a3a1a] shadow-inner object-cover" />
+                 <span className="text-xl font-semibold text-[#4a2c11] font-serif italic tracking-wider">José Rizal</span>
+               </div>
+               
+               <nav className="hidden md:flex space-x-20">
+                 <Link 
+                   to="/" 
+                   className="text-[#4a2c11] hover:text-[#6b4423] font-medium px-3 py-2 font-serif italic hover:underline decoration-[#6b4423] decoration-2 transition-all duration-200"
+                 >
+                   Home
+                 </Link>
+                 <Link 
+                   to="/works" 
+                   className="text-[#4a2c11] hover:text-[#6b4423] font-medium px-3 py-2 font-serif italic hover:underline decoration-[#6b4423] decoration-2 transition-all duration-200"
+                 >
+                   Works
+                 </Link>
+     
+                 {/* Novels Dropdown */}
+                 <Menu as="div" className="relative">
+                   <Menu.Button className="text-[#4a2c11] hover:text-[#6b4423] font-medium px-3 py-2 flex items-center font-serif italic group transition-all duration-200">
+                     Novels
+                     <ChevronDownIcon className="ml-1 h-5 w-5 text-[#6b4423] group-hover:text-[#5a3a1a] transition-transform duration-200" aria-hidden="true" />
+                   </Menu.Button>
+                   <Transition
+                     as={Fragment}
+                     enter="transition ease-out duration-200"
+                     enterFrom="transform opacity-0 scale-95"
+                     enterTo="transform opacity-100 scale-100"
+                     leave="transition ease-in duration-150"
+                     leaveFrom="transform opacity-100 scale-100"
+                     leaveTo="transform opacity-0 scale-95"
+                   >
+                     <Menu.Items className="absolute z-10 mt-1 w-56 origin-top-right rounded-md bg-[#e8d8b5] shadow-lg ring-1 ring-[#6b4423] ring-opacity-50 focus:outline-none border border-[#d4b98a]">
+                       <div className="py-1">
+                         <Menu.Item>
+                           {({ active }) => (
+                             <Link
+                               to="/novels/noli-me-tangere"
+                               className={classNames(
+                                 active ? 'bg-[#d4b98a] text-[#4a2c11]' : 'text-[#4a2c11]',
+                                 'block px-4 py-2 text-sm font-serif italic'
+                               )}
+                             >
+                               Noli Me Tangere
+                             </Link>
+                           )}
+                         </Menu.Item>
+                         <Menu.Item>
+                           {({ active }) => (
+                             <Link
+                               to="/novels/el-filibusterismo"
+                               className={classNames(
+                                 active ? 'bg-[#d4b98a] text-[#4a2c11]' : 'text-[#4a2c11]',
+                                 'block px-4 py-2 text-sm font-serif italic'
+                               )}
+                             >
+                               El Filibusterismo
+                             </Link>
+                           )}
+                         </Menu.Item>
+                       </div>
+                     </Menu.Items>
+                   </Transition>
+                 </Menu>
+     
+                 {/* About Dropdown */}
+                 <Menu as="div" className="relative">
+                   <Menu.Button className="text-[#4a2c11] hover:text-[#6b4423] font-medium px-3 py-2 flex items-center font-serif italic group transition-all duration-200">
+                     About
+                     <ChevronDownIcon className="ml-1 h-5 w-5 text-[#6b4423] group-hover:text-[#5a3a1a] transition-transform duration-200" aria-hidden="true" />
+                   </Menu.Button>
+                   <Transition
+                     as={Fragment}
+                     enter="transition ease-out duration-200"
+                     enterFrom="transform opacity-0 scale-95"
+                     enterTo="transform opacity-100 scale-100"
+                     leave="transition ease-in duration-150"
+                     leaveFrom="transform opacity-100 scale-100"
+                     leaveTo="transform opacity-0 scale-95"
+                   >
+                     <Menu.Items className="absolute z-10 mt-1 w-64 origin-top-right rounded-md bg-[#e8d8b5] shadow-lg ring-1 ring-[#6b4423] ring-opacity-50 focus:outline-none border border-[#d4b98a] overflow-y-auto max-h-[80vh]">
+                       <div className="py-1">
+                         <Menu.Item>
+                           {({ active }) => (
+                             <Link
+                               to="/about/biography"
+                               className={classNames(
+                                 active ? 'bg-[#d4b98a] text-[#4a2c11]' : 'text-[#4a2c11]',
+                                 'block px-4 py-2 text-sm font-serif italic hover:bg-[#d4b98a] transition-colors duration-200'
+                               )}
+                             >
+                               Biography
+                             </Link>
+                           )}
+                         </Menu.Item>
+                         <Menu.Item>
+                           {({ active }) => (
+                             <Link
+                               to="/about/timeline"
+                               className={classNames(
+                                 active ? 'bg-[#d4b98a] text-[#4a2c11]' : 'text-[#4a2c11]',
+                                 'block px-4 py-2 text-sm font-serif italic hover:bg-[#d4b98a] transition-colors duration-200'
+                               )}
+                             >
+                               Timeline
+                             </Link>
+                           )}
+                         </Menu.Item>
+                         <Menu.Item>
+                           {({ active }) => (
+                             <Link
+                               to="/about/political-thought"
+                               className={classNames(
+                                 active ? 'bg-[#d4b98a] text-[#4a2c11]' : 'text-[#4a2c11]',
+                                 'block px-4 py-2 text-sm font-serif italic hover:bg-[#d4b98a] transition-colors duration-200'
+                               )}
+                             >
+                               Political Thought
+                             </Link>
+                           )}
+                         </Menu.Item>
+                         <Menu.Item>
+                           {({ active }) => (
+                             <Link
+                               to="/about/legacy"
+                               className={classNames(
+                                 active ? 'bg-[#d4b98a] text-[#4a2c11]' : 'text-[#4a2c11]',
+                                 'block px-4 py-2 text-sm font-serif italic hover:bg-[#d4b98a] transition-colors duration-200'
+                               )}
+                             >
+                               Legacy
+                             </Link>
+                           )}
+                         </Menu.Item>
+                         <Menu.Item>
+                           {({ active }) => (
+                             <Link
+                               to="/about/quotes"
+                               className={classNames(
+                                 active ? 'bg-[#d4b98a] text-[#4a2c11]' : 'text-[#4a2c11]',
+                                 'block px-4 py-2 text-sm font-serif italic hover:bg-[#d4b98a] transition-colors duration-200'
+                               )}
+                             >
+                               Quotes
+                             </Link>
+                           )}
+                         </Menu.Item>
+                         <Menu.Item>
+                           {({ active }) => (
+                             <Link
+                               to="/about/interview"
+                               className={classNames(
+                                 active ? 'bg-[#d4b98a] text-[#4a2c11]' : 'text-[#4a2c11]',
+                                 'block px-4 py-2 text-sm font-serif italic hover:bg-[#d4b98a] transition-colors duration-200'
+                               )}
+                             >
+                               Interview & Opinions
+                             </Link>
+                           )}
+                         </Menu.Item>
+                       </div>
+                     </Menu.Items>
+                   </Transition>
+                 </Menu>
+               </nav>
+             </div>
+           </header>
       
       <main className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
         <div className="px-4 py-6 sm:px-0">
