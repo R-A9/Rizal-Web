@@ -250,7 +250,7 @@ export function Welcome() {
       </main>
 
       {/* RA 1425 Section */}
-      <section className="relative min-h-screen flex items-center justify-center bg-cover bg-center" style={{backgroundImage: "url('/images/rizal-bg-full.png')"}}>
+      <section id="bgpic" className="relative min-h-screen flex items-center justify-center bg-cover bg-center" style={{backgroundImage: "url('/images/rizal-bg-full.png')"}}>
         {/* Content */}
         <div className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-8 lg:px-12">
           <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-start">
@@ -318,31 +318,19 @@ export function Welcome() {
         </div>
       </section>
 
-      {/* Spacer with Rizal Image */}
-      <div className="relative w-full h-40 md:h-64 -mt-20 md:-mt-32 mb-10 md:mb-20">
-        <div className="absolute left-1/2 -translate-x-1/2 -top-1/2 w-48 md:w-64 h-auto">
-          <img 
-            src="/images/rizal-statue.png" 
-            alt="Jose Rizal" 
-            className="w-full h-auto object-contain"
-          />
-        </div>
-      </div>
-
       {/* Introduction Section */}
+     
       <section className="relative min-h-screen">
         <div className="absolute inset-0 z-0">
           <img 
-            src="/images/rizal-bg-2.jpg" 
+            src="/images/rizalquestion.png" 
             alt="Jose Rizal Background"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-black bg-opacity-20"></div>
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center justify-center py-16 md:py-24">
           <div className="text-center text-white max-w-4xl">
-            <h2 className="text-5xl md:text-7xl font-bold font-['Rosarivo'] italic mb-6">Introduction</h2>
-            <div className="w-24 h-1 bg-amber-400 mx-auto mb-12"></div>
+  
             {/* Add your introduction content here */}
           </div>
         </div>
