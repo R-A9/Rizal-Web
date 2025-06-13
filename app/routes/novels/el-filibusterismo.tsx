@@ -1,7 +1,7 @@
 import type { MetaArgs } from "../+types/novels";
 import { Link } from "react-router-dom";
 import { Menu, Transition } from '@headlessui/react';
-import { Fragment } from 'react';
+import { Fragment, useEffect } from 'react';
 import { ChevronDownIcon } from '@heroicons/react/20/solid';
 
 function classNames(...classes: string[]) {
@@ -16,6 +16,10 @@ export function meta({}: MetaArgs) {
 }
 
 export default function ElFilibusterismo() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Navigation Bar */}
@@ -128,6 +132,58 @@ export default function ElFilibusterismo() {
                             )}
                           >
                             Timeline
+                          </Link>
+                        )}
+                      </Menu.Item>
+                      <Menu.Item>
+                        {({ active }) => (
+                          <Link
+                            to="/about/political-thought"
+                            className={classNames(
+                              active ? 'bg-gray-100 text-blue-600' : 'text-gray-700',
+                              'block px-4 py-2 text-sm font-medium'
+                            )}
+                          >
+                            Political Thought
+                          </Link>
+                        )}
+                      </Menu.Item>
+                      <Menu.Item>
+                        {({ active }) => (
+                          <Link
+                            to="/about/legacy"
+                            className={classNames(
+                              active ? 'bg-gray-100 text-blue-600' : 'text-gray-700',
+                              'block px-4 py-2 text-sm font-medium'
+                            )}
+                          >
+                            Legacy
+                          </Link>
+                        )}
+                      </Menu.Item>
+                      <Menu.Item>
+                        {({ active }) => (
+                          <Link
+                            to="/about/quotes"
+                            className={classNames(
+                              active ? 'bg-gray-100 text-blue-600' : 'text-gray-700',
+                              'block px-4 py-2 text-sm font-medium'
+                            )}
+                          >
+                            Quotes
+                          </Link>
+                        )}
+                      </Menu.Item>
+                      <Menu.Item>
+                        {({ active }) => (
+                          <Link
+                            to="/about/interview"
+                            className={classNames(
+                              active ? 'bg-gray-100 text-blue-600' : 'text-gray-700',
+                              'block px-4 py-2 text-sm font-medium'
+                            )}
+                          >
+                            Interview and Opinions
                           </Link>
                         )}
                       </Menu.Item>
