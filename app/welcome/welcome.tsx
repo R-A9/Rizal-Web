@@ -299,34 +299,58 @@ export function Welcome() {
         <div className="relative z-10 h-full flex flex-col md:flex-row">
           {/* Left Container - Rizal */}
           <div className="w-full md:w-1/3 h-screen flex items-center justify-center p-4">
-            <img 
-              src="/images/rizal solo.png" 
-              alt="Jose Rizal Portrait"
-              className="max-w-[80%] max-h-[80vh] object-contain"
-            />
+            <div className="transition-all duration-300 transform hover:scale-[1.02] hover:shadow-md hover:z-10">
+              <img 
+                src="/images/rizal solo.png" 
+                alt="Jose Rizal Portrait"
+                className="max-w-[80%] max-h-[80vh] object-contain transition-all duration-300"
+              />
+            </div>
           </div>
 
           {/* Middle Container - Book */}
           <div className="w-full md:w-1/3 h-screen flex items-center justify-center p-4">
-            <div className="relative -left-8">
+            <div className="relative -left-8 transition-all duration-300 transform hover:scale-[1.02] hover:shadow-md hover:z-10">
               <img 
                 src="/images/bok.png" 
                 alt="Bok"
-                className="max-w-full max-h-[90vh] object-contain"
+                className="max-w-full max-h-[90vh] object-contain transition-all duration-300"
               />
             </div>
           </div>
 
           {/* Right Container - Fight */}
           <div className="w-full md:w-1/3 h-screen flex items-center justify-center p-4">
-            <img 
-              src="/images/fight.png" 
-              alt="Fight"
-              className="max-w-full max-h-[90vh] object-contain"
-            />
+            <div className="transition-all duration-300 transform hover:scale-[1.02] hover:shadow-md hover:z-10">
+              <img 
+                src="/images/fight.png" 
+                alt="Fight"
+                className="max-w-full max-h-[90vh] object-contain transition-all duration-300"
+              />
+            </div>
           </div>
         </div>
       </section>
+
+      {/* Genially Interactive Content */}
+      <div className="w-full bg-white py-12 px-4">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-3xl font-bold text-center mb-8 text-[#4a2c11] font-serif">Do You Know Rizal?</h2>
+          <div className="w-full">
+            <div className="relative pb-[56.25%] pt-0 h-0">
+              <iframe 
+                title="Do you know Rizal?"
+                className="absolute top-0 left-0 w-full h-full border-0"
+                src="https://view.genial.ly/658196a63efd51001456a7b0"
+                allowFullScreen
+                scrolling="yes"
+                allowScriptAccess="always"
+                allowNetworking="all"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
