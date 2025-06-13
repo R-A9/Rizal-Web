@@ -100,7 +100,7 @@ export function Welcome() {
           leaveFrom="transform opacity-100 scale-100"
           leaveTo="transform opacity-0 scale-95"
         >
-          <Menu.Items className="absolute z-10 mt-1 w-56 origin-top-right rounded-md bg-[#e8d8b5] shadow-lg ring-1 ring-[#6b4423] ring-opacity-50 focus:outline-none border border-[#d4b98a]">
+          <Menu.Items className="absolute z-10 mt-1 w-64 origin-top-right rounded-md bg-[#e8d8b5] shadow-lg ring-1 ring-[#6b4423] ring-opacity-50 focus:outline-none border border-[#d4b98a] overflow-y-auto max-h-[80vh]">
             <div className="py-1">
               <Menu.Item>
                 {({ active }) => (
@@ -108,7 +108,7 @@ export function Welcome() {
                     to="/about/biography"
                     className={classNames(
                       active ? 'bg-[#d4b98a] text-[#4a2c11]' : 'text-[#4a2c11]',
-                      'block px-4 py-2 text-sm font-serif italic'
+                      'block px-4 py-2 text-sm font-serif italic hover:bg-[#d4b98a] transition-colors duration-200'
                     )}
                   >
                     Biography
@@ -121,10 +121,62 @@ export function Welcome() {
                     to="/about/timeline"
                     className={classNames(
                       active ? 'bg-[#d4b98a] text-[#4a2c11]' : 'text-[#4a2c11]',
-                      'block px-4 py-2 text-sm font-serif italic'
+                      'block px-4 py-2 text-sm font-serif italic hover:bg-[#d4b98a] transition-colors duration-200'
                     )}
                   >
                     Timeline
+                  </Link>
+                )}
+              </Menu.Item>
+              <Menu.Item>
+                {({ active }) => (
+                  <Link
+                    to="/about/political-thought"
+                    className={classNames(
+                      active ? 'bg-[#d4b98a] text-[#4a2c11]' : 'text-[#4a2c11]',
+                      'block px-4 py-2 text-sm font-serif italic hover:bg-[#d4b98a] transition-colors duration-200'
+                    )}
+                  >
+                    Political Thought
+                  </Link>
+                )}
+              </Menu.Item>
+              <Menu.Item>
+                {({ active }) => (
+                  <Link
+                    to="/about/legacy"
+                    className={classNames(
+                      active ? 'bg-[#d4b98a] text-[#4a2c11]' : 'text-[#4a2c11]',
+                      'block px-4 py-2 text-sm font-serif italic hover:bg-[#d4b98a] transition-colors duration-200'
+                    )}
+                  >
+                    Legacy
+                  </Link>
+                )}
+              </Menu.Item>
+              <Menu.Item>
+                {({ active }) => (
+                  <Link
+                    to="/about/quotes"
+                    className={classNames(
+                      active ? 'bg-[#d4b98a] text-[#4a2c11]' : 'text-[#4a2c11]',
+                      'block px-4 py-2 text-sm font-serif italic hover:bg-[#d4b98a] transition-colors duration-200'
+                    )}
+                  >
+                    Quotes
+                  </Link>
+                )}
+              </Menu.Item>
+              <Menu.Item>
+                {({ active }) => (
+                  <Link
+                    to="/about/interview"
+                    className={classNames(
+                      active ? 'bg-[#d4b98a] text-[#4a2c11]' : 'text-[#4a2c11]',
+                      'block px-4 py-2 text-sm font-serif italic hover:bg-[#d4b98a] transition-colors duration-200'
+                    )}
+                  >
+                    Interview & Opinions
                   </Link>
                 )}
               </Menu.Item>
