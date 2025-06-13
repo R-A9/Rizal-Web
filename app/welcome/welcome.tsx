@@ -284,9 +284,9 @@ export function Welcome() {
         </div>
       </section>
 
-      {/* Introduction Section */}
-     
+      {/* Image Collage with Background */}
       <section className="relative min-h-screen">
+        {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <img 
             src="/images/rizalquestion.png" 
@@ -294,10 +294,36 @@ export function Welcome() {
             className="w-full h-full object-cover"
           />
         </div>
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center justify-center py-16 md:py-24">
-          <div className="text-center text-white max-w-4xl">
-  
-            {/* Add your introduction content here */}
+        
+        {/* Content Overlay */}
+        <div className="relative z-10 h-full flex flex-col md:flex-row">
+          {/* Left Container - Rizal */}
+          <div className="w-full md:w-1/3 h-screen flex items-center justify-center p-4">
+            <img 
+              src="/images/rizal solo.png" 
+              alt="Jose Rizal Portrait"
+              className="max-w-[80%] max-h-[80vh] object-contain"
+            />
+          </div>
+
+          {/* Middle Container - Book */}
+          <div className="w-full md:w-1/3 h-screen flex items-center justify-center p-4">
+            <div className="relative -left-8">
+              <img 
+                src="/images/bok.png" 
+                alt="Bok"
+                className="max-w-full max-h-[90vh] object-contain"
+              />
+            </div>
+          </div>
+
+          {/* Right Container - Fight */}
+          <div className="w-full md:w-1/3 h-screen flex items-center justify-center p-4">
+            <img 
+              src="/images/fight.png" 
+              alt="Fight"
+              className="max-w-full max-h-[90vh] object-contain"
+            />
           </div>
         </div>
       </section>
