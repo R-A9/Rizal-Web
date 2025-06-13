@@ -333,10 +333,16 @@ export function Welcome() {
       </section>
 
       {/* Genially Interactive Content */}
-      <div className="w-full bg-white py-12 px-4">
-        <div className="max-w-5xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-8 text-[#4a2c11] font-serif">Do You Know Rizal?</h2>
-          <div className="w-full">
+      <div className="w-full py-16 px-4 relative" style={{
+        backgroundImage: 'url(/images/quizbackground.png)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
+      }}>
+        <div className="absolute inset-0 bg-black/30 -z-10"></div>
+        <div className="max-w-5xl mx-auto relative">
+          <h2 className="text-3xl font-bold text-center mb-8 text-black font-serif drop-shadow-md">Do You Know Rizal?</h2>
+          <div className="w-full bg-white/90 p-4 rounded-lg shadow-xl">
             <div className="relative pb-[56.25%] pt-0 h-0">
               <iframe 
                 title="Do you know Rizal?"
