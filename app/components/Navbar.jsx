@@ -1,33 +1,187 @@
 import { Link } from "react-router-dom";
 import { Menu, Transition } from '@headlessui/react';
-import { Fragment } from 'react';
-import { ChevronDownIcon } from '@heroicons/react/20/solid';
+import { Fragment, useState } from 'react';
+import { ChevronDownIcon, Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
+
+// Global styles for WebKit scrollbars
+const scrollbarStyles = `
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 8px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: #e8d8b5;
+    border-radius: 4px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: #d4b98a;
+    border-radius: 4px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    background-color: #c5a97b;
+  }
+`;
+
+// Add styles to the document head
+if (typeof document !== 'undefined') {
+  const styleElement = document.createElement('style');
+  styleElement.textContent = scrollbarStyles;
+  document.head.appendChild(styleElement);
+}
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
 }
 
-export default function Navbar() {
+// Mobile dropdown components
+function MobileNovelsDropdown({ onNavigate }) {
+  const [open, setOpen] = useState(false);
+
   return (
-    <header className="bg-[#e8d8b5] shadow-lg sticky top-0 z-50 border-b-2 border-[#6b4423]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex justify-between items-center">
-        <div className="flex items-center space-x-2">
-          <img 
-            src="/images/profile.jpg" 
-            alt="Jose Rizal" 
-            className="w-12 h-12 rounded-full border-2 border-[#5a3a1a] shadow-inner object-cover" 
-          />
-          <span className="text-xl font-semibold text-[#4a2c11] font-serif italic tracking-wider">
-            José Rizal
-          </span>
+    <div className="space-y-2">
+      <button
+        type="button"
+        className="flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base font-medium leading-7 text-[#4a2c11] hover:bg-[#d4b98a] font-serif italic"
+        onClick={() => setOpen(!open)}
+      >
+        Novels
+        <ChevronDownIcon
+          className={`h-5 w-5 flex-none text-[#6b4423] transition-transform duration-200 ${open ? 'rotate-180' : ''}`}
+          aria-hidden="true"
+        />
+      </button>
+      {open && (
+        <div className="mt-2 space-y-2 pl-6">
+          <Link
+            to="/novels/noli-me-tangere"
+            onClick={() => {
+              setOpen(false);
+              onNavigate();
+            }}
+            className="block rounded-lg py-2 pl-3 pr-3.5 text-sm leading-7 text-[#4a2c11] hover:bg-[#d4b98a] font-serif italic"
+          >
+            Noli Me Tangere
+          </Link>
+          <Link
+            to="/novels/el-filibusterismo"
+            onClick={() => {
+              setOpen(false);
+              onNavigate();
+            }}
+            className="block rounded-lg py-2 pl-3 pr-3.5 text-sm leading-7 text-[#4a2c11] hover:bg-[#d4b98a] font-serif italic"
+          >
+            El Filibusterismo
+          </Link>
         </div>
-        
-        <nav className="hidden md:flex space-x-20">
-          <NavLink to="/">Home</NavLink>
-          <NavLink to="/works">Works</NavLink>
-          <NovelsDropdown />
-          <AboutDropdown />
-        </nav>
+      )}
+    </div>
+  );
+}
+
+function MobileAboutDropdown({ onNavigate }) {
+  const [open, setOpen] = useState(false);
+  const menuItems = [
+    { to: '/about/biography', label: 'Biography' },
+    { to: '/about/timeline', label: 'Timeline' },
+    { to: '/about/political-thought', label: 'Political Thought' },
+    { to: '/about/legacy', label: 'Legacy' },
+    { to: '/about/quotes', label: 'Quotes' },
+    { to: '/about/interview', label: 'Interview & Opinions' },
+  ];
+
+  return (
+    <div className="space-y-2">
+      <button
+        type="button"
+        className="flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base font-medium leading-7 text-[#4a2c11] hover:bg-[#d4b98a] font-serif italic"
+        onClick={() => setOpen(!open)}
+      >
+        About
+        <ChevronDownIcon
+          className={`h-5 w-5 flex-none text-[#6b4423] transition-transform duration-200 ${open ? 'rotate-180' : ''}`}
+          aria-hidden="true"
+        />
+      </button>
+      {open && (
+        <div className="mt-2 space-y-2 pl-6">
+          {menuItems.map((item) => (
+            <Link
+              key={item.to}
+              to={item.to}
+              onClick={() => {
+                setOpen(false);
+                onNavigate();
+              }}
+              className="block rounded-lg py-2 pl-3 pr-3.5 text-sm leading-7 text-[#4a2c11] hover:bg-[#d4b98a] font-serif italic"
+            >
+              {item.label}
+            </Link>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+export default function Navbar() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <header className="bg-[#e8d8b5] shadow-lg sticky top-0 z-50 border-b border-[#6b4423]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+        <div className="flex justify-between items-center">
+          <div className="flex items-center space-x-2">
+            <img 
+              src="/images/profile.jpg" 
+              alt="Jose Rizal" 
+              className="w-12 h-12 rounded-full border-2 border-[#5a3a1a] shadow-inner object-cover" 
+            />
+            <span className="text-lg font-semibold text-[#4a2c11] font-serif italic tracking-wider">
+              José Rizal
+            </span>
+          </div>
+          
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex space-x-12">
+            <NavLink to="/">Home</NavLink>
+            <NavLink to="/works">Works</NavLink>
+            <NovelsDropdown />
+            <AboutDropdown />
+          </nav>
+
+          {/* Mobile menu button */}
+          <div className="md:hidden">
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="text-[#4a2c11] hover:text-[#6b4423] focus:outline-none"
+              aria-label="Toggle menu"
+            >
+              {isOpen ? (
+                <XMarkIcon className="h-8 w-8" />
+              ) : (
+                <Bars3Icon className="h-8 w-8" />
+              )}
+            </button>
+          </div>
+        </div>
+
+        {/* Mobile Menu */}
+        <Transition
+          show={isOpen}
+          enter="transition ease-out duration-100 transform"
+          enterFrom="opacity-0 scale-95"
+          enterTo="opacity-100 scale-100"
+          leave="transition ease-in duration-75 transform"
+          leaveFrom="opacity-100 scale-100"
+          leaveTo="opacity-0 scale-95"
+          className="md:hidden mt-4"
+        >
+          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-[#e8d8b5] rounded-lg shadow-lg">
+            <NavLinkMobile to="/" onClick={() => setIsOpen(false)}>Home</NavLinkMobile>
+            <NavLinkMobile to="/works" onClick={() => setIsOpen(false)}>Works</NavLinkMobile>
+            <MobileNovelsDropdown onNavigate={() => setIsOpen(false)} />
+            <MobileAboutDropdown onNavigate={() => setIsOpen(false)} />
+          </div>
+        </Transition>
       </div>
     </header>
   );
@@ -37,7 +191,19 @@ function NavLink({ to, children }) {
   return (
     <Link 
       to={to}
-      className="text-[#4a2c11] hover:text-[#6b4423] font-medium px-3 py-2 font-serif italic hover:underline decoration-[#6b4423] decoration-2 transition-all duration-200"
+      className="flex items-center gap-x-1 text-sm font-medium leading-6 text-[#4a2c11] hover:text-[#6b4423] font-serif italic px-2.5 py-1.5 -my-1.5 hover:underline decoration-[#6b4423] decoration-1.5 transition-all duration-200"
+    >
+      {children}
+    </Link>
+  );
+}
+
+function NavLinkMobile({ to, children, onClick }) {
+  return (
+    <Link
+      to={to}
+      onClick={onClick}
+      className="block px-4 py-2 text-base font-medium text-[#4a2c11] hover:bg-[#d4b98a] hover:text-[#4a2c11] rounded-md font-serif italic"
     >
       {children}
     </Link>
@@ -47,9 +213,9 @@ function NavLink({ to, children }) {
 function NovelsDropdown() {
   return (
     <Menu as="div" className="relative">
-      <Menu.Button className="text-[#4a2c11] hover:text-[#6b4423] font-medium px-3 py-2 flex items-center font-serif italic group transition-all duration-200">
+      <Menu.Button className="flex items-center gap-x-1 text-sm font-medium leading-6 text-[#4a2c11] hover:text-[#6b4423] font-serif italic px-2.5 py-1.5 -my-1.5">
         Novels
-        <ChevronDownIcon className="ml-1 h-5 w-5 text-[#6b4423] group-hover:text-[#5a3a1a] transition-transform duration-200" aria-hidden="true" />
+        <ChevronDownIcon className="h-5 w-5 flex-none text-[#6b4423]" aria-hidden="true" />
       </Menu.Button>
       <Transition
         as={Fragment}
@@ -60,7 +226,14 @@ function NovelsDropdown() {
         leaveFrom="transform opacity-100 scale-100"
         leaveTo="transform opacity-0 scale-95"
       >
-        <Menu.Items className="absolute z-10 mt-1 w-56 origin-top-right rounded-md bg-[#e8d8b5] shadow-lg ring-1 ring-[#6b4423] ring-opacity-50 focus:outline-none border border-[#d4b98a]">
+        <Menu.Items 
+          className="absolute z-10 mt-1 w-56 origin-top-right rounded-md bg-[#e8d8b5] shadow-lg ring-1 ring-[#6b4423] ring-opacity-50 focus:outline-none border border-[#d4b98a] max-h-[70vh] overflow-y-auto scrollbar-thin"
+          style={{ 
+            scrollbarWidth: 'thin',
+            scrollbarColor: '#d4b98a #e8d8b5',
+            msOverflowStyle: 'thin'
+          }}
+        >
           <div className="py-1">
             <Menu.Item>
               {({ active }) => (
@@ -98,9 +271,9 @@ function NovelsDropdown() {
 function AboutDropdown() {
   return (
     <Menu as="div" className="relative">
-      <Menu.Button className="text-[#4a2c11] hover:text-[#6b4423] font-medium px-3 py-2 flex items-center font-serif italic group transition-all duration-200">
+      <Menu.Button className="flex items-center gap-x-1 text-sm font-medium leading-6 text-[#4a2c11] hover:text-[#6b4423] font-serif italic px-2.5 py-1.5 -my-1.5">
         About
-        <ChevronDownIcon className="ml-1 h-5 w-5 text-[#6b4423] group-hover:text-[#5a3a1a] transition-transform duration-200" aria-hidden="true" />
+        <ChevronDownIcon className="h-5 w-5 flex-none text-[#6b4423]" aria-hidden="true" />
       </Menu.Button>
       <Transition
         as={Fragment}
@@ -111,7 +284,15 @@ function AboutDropdown() {
         leaveFrom="transform opacity-100 scale-100"
         leaveTo="transform opacity-0 scale-95"
       >
-        <Menu.Items className="absolute z-10 mt-1 w-64 origin-top-right rounded-md bg-[#e8d8b5] shadow-lg ring-1 ring-[#6b4423] ring-opacity-50 focus:outline-none border border-[#d4b98a] overflow-y-auto max-h-[80vh]">
+        <Menu.Items 
+          className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-[#e8d8b5] shadow-lg ring-1 ring-[#6b4423] ring-opacity-50 focus:outline-none border border-[#d4b98a] max-h-[70vh] overflow-y-auto scrollbar-thin" 
+          style={{ 
+            scrollbarWidth: 'thin',
+            scrollbarColor: '#d4b98a #e8d8b5',
+            msOverflowStyle: 'thin',
+            maxHeight: 'calc(100vh - 100px)'
+          }}
+        >
           <div className="py-1">
             <Menu.Item>
               {({ active }) => (
