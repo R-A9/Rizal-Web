@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import { useEffect } from 'react';
 import Navbar from '../../components/Navbar';
 import { ArrowTopRightOnSquareIcon } from '@heroicons/react/20/solid';

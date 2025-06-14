@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import { TypeAnimation } from 'react-type-animation';
 import { useEffect, useMemo, useCallback } from 'react';
 import Navbar from '../components/Navbar';
