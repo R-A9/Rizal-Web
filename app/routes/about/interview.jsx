@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import { Menu, Transition } from '@headlessui/react';
 import { Fragment, useEffect } from 'react';
 import { ChevronDownIcon } from '@heroicons/react/20/solid';
+import { ArrowTopRightOnSquareIcon } from '@heroicons/react/20/solid';
+import { ArrowRightIcon } from "@heroicons/react/24/solid";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
@@ -21,24 +23,29 @@ export default function Interview() {
 
   const interviews = [
     {
-      title: "Views on Spanish Colonial Rule",
-      content: "Rizal's writings often criticized the abuses of Spanish colonial rule while advocating for peaceful reforms and representation in the Spanish Cortes.",
-      source: "Various correspondences and writings"
+      title: "Prof. Xiao Chua's Insights",
+      content: "Rizal fought with reason rather than weapons. He envisioned a well-educated and united Filipino nation, and if alive today, he would likely use digital platforms to advocate for reform.",
+      source: "https://www.youtube.com/watch?app=desktop&v=7PCA7akfKGg"
     },
     {
-      title: "Opinion on Revolution",
-      content: "While Rizal advocated for reforms, he was initially against a violent revolution, believing that education and peaceful means were the proper ways to achieve change.",
-      source: "Letters to the Women of Malolos"
+      title: "Ambeth R. Ocampo's Discoveries",
+      content: "Ocampo debunked the myth that Rizal wrote 'Sa Aking Mga Kabata'. He also discovered the unfinished novel 'Makamisa', which showcases Rizal's satirical humor. Rizal valued service and practical reforms over political titles.",
+      source: "https://www.gmanetwork.com/news/lifestyle/artandculture/792168/8-lessons-you-can-learn-from-and-about-jose-rizal-according-to-historian-ambeth-ocampo/story/"
     },
     {
-      title: "Perspective on Religion",
-      content: "Rizal was critical of the abuses of the Catholic Church during the Spanish colonial period but maintained his Catholic faith while advocating for religious freedom and the secularization of parishes.",
-      source: "Noli Me Tangere and El Filibusterismo"
+      title: "Dr. Resil Mojares on Rizal's Philosophy",
+      content: "Rizal criticized the complacency of Filipinos and the prevalence of colonial mentality. He championed humanism, cultural pride, and the importance of education.",
+      source: "https://www.goodreads.com/book/show/34941618-interrogations-in-philippine-cultural-history"
+    },    
+    {
+      title: "Prof. Jose Victor Torres' Perspective",
+      content: "Rizal's exposure to liberal ideologies in Spain deeply influenced his political views. He believed that transformation in the Philippines could be achieved through shaping national identity and spreading ideas.",
+      source: ""
     },
     {
-      title: "Vision for the Philippines",
-      content: "Rizal envisioned a Philippines that was free from colonial rule, with an educated citizenry and a government that served the interests of the Filipino people.",
-      source: "La Solidaridad articles"
+      title: "John Ray Ramos on Rizal's Legacy",
+      content: "Rizal's symbolic power grew significantly after his death. He became a moral figure whose legacy inspired the revolutionary Katipunan.",
+      source: ""
     }
   ];
 
@@ -217,10 +224,21 @@ export default function Interview() {
             </header>
 
       {/* Main Content */}
-      <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div 
+        style={{
+          backgroundImage: "url('/images/rizal-interviews.png')",
+          backgroundRepeat: "no-repeat",
+          backgroundAttachment: "fixed",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          minHeight: "100vh",
+        }}
+        className="px-4 py-4 sm:px-6 lg:px-8 flex items-center justify-center"
+      >
+      <main className="w-full max-w-4xl mx-auto bg-white/80 backdrop-blur-md rounded-xl shadow-2xl p-8 md:p-12">
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">Interview and Opinions</h1>
-          <p className="text-xl text-gray-600">
+          <h1 className="text-4xl md:text-5xl font-extrabold text-[#4a2c11] mb-4 drop-shadow">Interview and Opinions</h1>
+          <p className="text-xl text-[#4a2c11] max-w-2xl mx-auto">
             Insights and perspectives on Dr. Jose Rizal's views and beliefs
           </p>
         </div>
@@ -228,48 +246,68 @@ export default function Interview() {
         <div className="space-y-8">
           {interviews.map((item, index) => (
             <div key={index} className="bg-white p-6 rounded-lg shadow-md">
-              <h2 className="text-2xl font-semibold text-gray-900 mb-3">{item.title}</h2>
-              <p className="text-gray-700 mb-3">{item.content}</p>
-              <p className="text-right text-gray-500 text-sm">Source: {item.source}</p>
+              <h2 className="text-2xl font-semibold text-[#4a2c11] mb-3">{item.title}</h2>
+              <p className="text-[#4a2c11] mb-3">{item.content}</p>
+              {item.source ? (
+                <p className="text-right text-sm">
+                  <a 
+                    href={item.source} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="inline-flex items-center gap-1 text-[#4a2c11]"
+                  >
+                    Source
+                    <ArrowTopRightOnSquareIcon className="w-4 h-4 text-[#4a2c11]" aria-hidden="true" />
+                  </a>
+                </p>
+              ) : (
+                <p className="text-right text-sm text-gray-400 italic">No source available</p>
+              )}
             </div>
           ))}
           
           {/* Related Links */}
           <div className="mt-12">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">Dive Deeper</h2>
+            <h2 className="text-2xl font-bold text-[#4a2c11] mb-6">Dive Deeper</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <Link 
                 to="/about/political-thought" 
-                className="p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow"
+                className="relative p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow"
               >
-                <h3 className="text-xl font-semibold text-blue-600 mb-2">Political Thought</h3>
-                <p className="text-gray-600">Explore the philosophical underpinnings of Rizal's views and opinions.</p>
+                <h3 className="text-xl font-semibold text-[#4a2c11] mb-2">Political Thought</h3>
+                <p className="text-[#4a2c11] pb-2">Explore the philosophical underpinnings of Rizal's views and opinions.</p>
+                <ArrowRightIcon className="absolute bottom-4 right-4 w-5 h-5 text-[#4a2c11]" />
               </Link>
               <Link 
                 to="/about/legacy" 
-                className="p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow"
+                className="relative p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow"
               >
-                <h3 className="text-xl font-semibold text-blue-600 mb-2">Legacy</h3>
-                <p className="text-gray-600">Discover how Rizal's ideas continue to influence modern Philippine society.</p>
+                <h3 className="text-xl font-semibold text-[#4a2c11] mb-2">Legacy</h3>
+                <p className="text-[#4a2c11]  pb-2">Discover how Rizal's ideas continue to influence modern Philippine society.</p>
+                <ArrowRightIcon className="absolute bottom-4 right-4 w-5 h-5 text-[#4a2c11]" />
               </Link>
               <Link 
                 to="/about/quotes" 
-                className="p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow"
+                className="relative p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow"
               >
-                <h3 className="text-xl font-semibold text-blue-600 mb-2">Notable Quotes</h3>
-                <p className="text-gray-600">Read powerful statements that capture Rizal's thoughts and beliefs.</p>
+                <h3 className="text-xl font-semibold text-[#4a2c11] mb-2">Notable Quotes</h3>
+                <p className="text-[#4a2c11] pb-2">Read powerful statements that capture Rizal's thoughts and beliefs.</p>
+                <ArrowRightIcon className="absolute bottom-4 right-4 w-5 h-5 text-[#4a2c11]" />
               </Link>
               <Link 
                 to="/novels/el-filibusterismo" 
-                className="p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow"
+                className="relative p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow"
               >
-                <h3 className="text-xl font-semibold text-blue-600 mb-2">El Filibusterismo</h3>
-                <p className="text-gray-600">Explore Rizal's second novel that further develops his political and social commentary.</p>
+                <h3 className="text-xl font-semibold text-[#4a2c11] mb-2">El Filibusterismo</h3>
+                <p className="text-[#4a2c11] pb-2">Explore Rizal's second novel that further develops his political and social commentary.</p>
+                <br></br>
+                <ArrowRightIcon className="absolute bottom-4 right-4 w-5 h-5 text-[#4a2c11]" />
               </Link>
             </div>
           </div>
         </div>
       </main>
+      </div>
     </div>
   );
 }
