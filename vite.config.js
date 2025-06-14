@@ -1,18 +1,12 @@
 import { reactRouter } from "@react-router/dev/vite";
 import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "vite";
-import { analyzer } from "vite-bundle-analyzer";
 
 export default defineConfig({
   plugins: [
     tailwindcss(), 
-    reactRouter(),
-    // Add bundle analyzer only when ANALYZE=true
-    process.env.ANALYZE && analyzer({
-      analyzerMode: 'server',
-      openAnalyzer: true,
-    })
-  ].filter(Boolean),
+    reactRouter()
+  ],
   
   optimizeDeps: {
     esbuildOptions: {
