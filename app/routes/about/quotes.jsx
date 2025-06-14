@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { Menu, Transition } from '@headlessui/react';
 import { Fragment, useEffect } from 'react';
 import { ChevronDownIcon } from '@heroicons/react/20/solid';
+import { ArrowRightIcon } from '@heroicons/react/24/outline';
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
@@ -21,9 +22,9 @@ export default function Quotes() {
 
   const quotes = [
     {
-      text: "He who does not know how to look back at where he came from will never get to his destination.",
-      source: "Noli Me Tangere"
-    },
+    text: "He who does not know how to look back at where he came from will never get to his destination.",
+    source: "Noli Me Tangere"
+    }, 
     {
       text: "The youth is the hope of our future.",
       source: "To the Filipino Youth"
@@ -39,6 +40,48 @@ export default function Quotes() {
     {
       text: "The glory of saving a country is not for him who has contributed to its ruin.",
       source: "El Filibusterismo"
+    },
+
+    {
+      text: "The youth is the hope of the nation.",
+      source: "Jose Rizal"
+    },
+    {
+      text: "Freedom is not given; it is fought for.",
+      source: "Jose Rizal"
+    },
+    {
+      text: "The pen is mightier than the sword.",
+      source: "Jose Rizal"
+    },
+    {
+      text: "There can be no tyrants if no one allows themselves to be oppressed.",
+      source: "Jose Rizal"
+    },
+    {
+      text: "A life not dedicated to a noble purpose is a wasted life.",
+      source: "Jose Rizal"
+    },
+
+    {
+      text: "Ang kabataan ang pag-asa ng bayan.",
+      source: "Jose Rizal"
+    },
+    {
+      text: "Ang kalayaan ay hindi ipinagkakaloob, ito ay ipinaglalaban.",
+      source: "Jose Rizal"
+    },
+    {
+      text: "Ang panulat ay mas makapangyarihan kaysa tabak.",
+      source: "Jose Rizal"
+    },
+    {
+      text: "Walang mang-aalipin kung walang nagpapalupig.",
+      source: "Jose Rizal"
+    },
+    {
+      text: "Ang buhay na hindi inialay sa isang dakilang layunin ay walang saysay.",
+      source: "Jose Rizal"
     }
   ];
 
@@ -217,18 +260,29 @@ export default function Quotes() {
             </header>
             
       {/* Main Content */}
-      <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div 
+        style={{
+          backgroundImage: "url('/images/rizal-legacy.png')",
+          backgroundRepeat: "no-repeat",
+          backgroundAttachment: "fixed",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          minHeight: "100vh",
+        }}
+        className="px-4 py-4 sm:px-6 lg:px-8 flex items-center justify-center"
+      >
+      <main className="w-full max-w-4xl mx-auto bg-white/50 backdrop-blur-md rounded-xl shadow-2xl p-8 md:p-12">
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">Famous Quotes</h1>
-          <p className="text-xl text-gray-600">
+          <h1 className="text-4xl md:text-5xl font-extrabold text-[#4a2c11] mb-4 drop-shadow">Famous Quotes</h1>
+          <p className="text-xl text-[#4a2c11] max-w-2xl mx-auto">
             Timeless words of wisdom from Dr. Jose Rizal
           </p>
         </div>
 
         <div className="space-y-8">
           {quotes.map((quote, index) => (
-            <div key={index} className="bg-white p-6 rounded-lg shadow-md">
-              <blockquote className="text-xl italic text-gray-700 mb-4">
+            <div key={index} className="bg-white/50 p-6 rounded-lg shadow-md">
+              <blockquote className="text-xl italic text-[#4a2c11] mb-4">
                 "{quote.text}"
               </blockquote>
               <p className="text-right text-gray-500">— {quote.source}</p>
@@ -237,40 +291,45 @@ export default function Quotes() {
           
           {/* Related Links */}
           <div className="mt-12">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">Continue Exploring</h2>
+            <h2 className="text-2xl font-bold text-[#4a2c11] mb-6">Continue Exploring</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <Link 
                 to="/about/political-thought" 
-                className="p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow"
+                className="relative p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow"
               >
-                <h3 className="text-xl font-semibold text-blue-600 mb-2">Political Thought</h3>
-                <p className="text-gray-600">Dive deeper into the ideas behind Rizal's most famous quotes and writings.</p>
+                <h3 className="text-xl font-semibold text-[#4a2c11] mb-2">Political Thought</h3>
+                <p className="text-[#4a2c11] pb-2">Understand the philosophical foundations behind Rizal's lasting impact on the nation.</p>
+                <ArrowRightIcon className="absolute bottom-4 right-4 w-5 h-5 text-[#4a2c11]" />
               </Link>
               <Link 
                 to="/about/legacy" 
-                className="p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow"
+                className="relative p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow"
               >
-                <h3 className="text-xl font-semibold text-blue-600 mb-2">Legacy</h3>
-                <p className="text-gray-600">See how Rizal's words continue to shape the Philippines today.</p>
+                <h3 className="text-xl font-semibold text-[#4a2c11] mb-2">Legacy</h3>
+                <p className="text-[#4a2c11] pb-2">See how Rizal's words continue to shape the Philippines today.</p>
+                <ArrowRightIcon className="absolute bottom-4 right-4 w-5 h-5 text-[#4a2c11]" />
               </Link>
               <Link 
                 to="/about/interview" 
-                className="p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow"
+                className="relative p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow"
               >
-                <h3 className="text-xl font-semibold text-blue-600 mb-2">Interview & Opinions</h3>
-                <p className="text-gray-600">Read more about Rizal's views in his own words and others' perspectives.</p>
+                <h3 className="text-xl font-semibold text-[#4a2c11] mb-2">Interview & Opinions</h3>
+                <p className="text-[#4a2c11] pb-2">Read more about Rizal's views in his own words and others' perspectives.</p>
+                <ArrowRightIcon className="absolute bottom-4 right-4 w-5 h-5 text-[#4a2c11]" />
               </Link>
               <Link 
                 to="/works" 
-                className="p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow"
+                className="relative p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow"
               >
-                <h3 className="text-xl font-semibold text-blue-600 mb-2">All Works</h3>
-                <p className="text-gray-600">Explore the complete collection of Rizal's literary works and writings.</p>
+                <h3 className="text-xl font-semibold text-[#4a2c11] mb-2">All Works</h3>
+                <p className="text-[#4a2c11]  pb-2">Explore the complete collection of Rizal's literary works and writings.</p>
+                <ArrowRightIcon className="absolute bottom-4 right-4 w-5 h-5 text-[#4a2c11]" />
               </Link>
             </div>
           </div>
         </div>
       </main>
+      </div>
     </div>
   );
 }

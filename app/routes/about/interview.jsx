@@ -235,7 +235,7 @@ export default function Interview() {
         }}
         className="px-4 py-4 sm:px-6 lg:px-8 flex items-center justify-center"
       >
-      <main className="w-full max-w-4xl mx-auto bg-white/80 backdrop-blur-md rounded-xl shadow-2xl p-8 md:p-12">
+      <main className="w-full max-w-4xl mx-auto bg-white/50 backdrop-blur-md rounded-xl shadow-2xl p-8 md:p-12">
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-extrabold text-[#4a2c11] mb-4 drop-shadow">Interview and Opinions</h1>
           <p className="text-xl text-[#4a2c11] max-w-2xl mx-auto">
@@ -245,7 +245,7 @@ export default function Interview() {
 
         <div className="space-y-8">
           {interviews.map((item, index) => (
-            <div key={index} className="bg-white p-6 rounded-lg shadow-md">
+            <div key={index} className="bg-white/50 p-6 rounded-lg shadow-md">
               <h2 className="text-2xl font-semibold text-[#4a2c11] mb-3">{item.title}</h2>
               <p className="text-[#4a2c11] mb-3">{item.content}</p>
               {item.source ? (

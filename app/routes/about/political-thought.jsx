@@ -229,7 +229,7 @@ export default function PoliticalThought() {
         }}
         className="px-4 py-4 sm:px-6 lg:px-8 flex items-center justify-center"
       >
-        <main className="w-full max-w-4xl mx-auto bg-white/80 backdrop-blur-md rounded-xl shadow-2xl p-8 md:p-12">
+        <main className="w-full max-w-4xl mx-auto bg-white/50 backdrop-blur-md rounded-xl shadow-2xl p-8 md:p-12">
           <div className="text-center mb-10">
             <h1 className="text-4xl md:text-5xl font-extrabold text-[#4a2c11] mb-4 drop-shadow">Political Thought</h1>
             <p className="text-xl text-[#4a2c11] max-w-2xl mx-auto">
