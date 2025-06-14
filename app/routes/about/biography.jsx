@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import { useEffect, memo, useMemo } from 'react';
 import Navbar from '../../components/Navbar';
 import { classNames, perfUtils } from '../../utils';

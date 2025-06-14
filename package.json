@@ -1,9 +1,8 @@
 {  "name": "rizal-web",
   "private": true,
-  "type": "module",
-  "engines": {
-    "node": "18.x"
-  },  "scripts": {
+  "type": "module",  "engines": {
+    "node": "20.x"
+  },"scripts": {
     "build": "react-router build",
     "dev": "cross-env NODE_OPTIONS=--experimental-vm-modules react-router dev",
     "start": "react-router-serve ./build/server/index.js",
