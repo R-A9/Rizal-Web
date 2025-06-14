@@ -1,14 +1,13 @@
-import type { MetaArgs } from "../+types/about";
 import { Link } from "react-router-dom";
 import { Menu, Transition } from '@headlessui/react';
 import { Fragment, useEffect } from 'react';
 import { ChevronDownIcon } from '@heroicons/react/20/solid';
 
-function classNames(...classes: string[]) {
+function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
 }
 
-export function meta({}: MetaArgs) {
+export function meta() {
   return [
     { title: "Legacy - Jose Rizal" },
     { name: "description", content: "Explore the enduring legacy and impact of Dr. Jose Rizal on Philippine history and culture" },

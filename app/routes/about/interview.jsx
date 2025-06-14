@@ -1,14 +1,13 @@
-import type { MetaArgs } from "../+types/about";
 import { Link } from "react-router-dom";
 import { Menu, Transition } from '@headlessui/react';
 import { Fragment, useEffect } from 'react';
 import { ChevronDownIcon } from '@heroicons/react/20/solid';
 
-function classNames(...classes: string[]) {
+function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
 }
 
-export function meta({}: MetaArgs) {
+export function meta() {
   return [
     { title: "Interview and Opinions - Jose Rizal" },
     { name: "description", content: "Interviews and opinions about Dr. Jose Rizal from various perspectives" },

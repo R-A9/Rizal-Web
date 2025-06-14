@@ -1,21 +1,20 @@
-import type { MetaArgs } from "../+types/novels";
 import { Link } from "react-router-dom";
 import { Menu, Transition } from '@headlessui/react';
 import { Fragment, useEffect } from 'react';
 import { ChevronDownIcon } from '@heroicons/react/20/solid';
 
-function classNames(...classes: string[]) {
+function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
 }
 
-export function meta({}: MetaArgs) {
+export function meta() {
   return [
-    { title: "El Filibusterismo - Jose Rizal" },
-    { name: "description", content: "El Filibusterismo (The Reign of Greed) - The second novel by Dr. Jose Rizal, a sequel to Noli Me Tangere, depicting the last days of Spanish rule in the Philippines" },
+    { title: "Noli Me Tangere - Jose Rizal" },
+    { name: "description", content: "Noli Me Tangere (Touch Me Not) - A novel by Dr. Jose Rizal that exposed the abuses of the Spanish colonial government and the Catholic Church in the Philippines" },
   ];
 }
 
-export default function ElFilibusterismo() {
+export default function NoliMeTangere() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -195,12 +194,12 @@ export default function ElFilibusterismo() {
             </header>
 
       {/* Hero Section */}
-      <div className="bg-blue-800 text-white">
+      <div className="bg-amber-700 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="max-w-3xl">
-            <h1 className="text-4xl font-bold mb-4">El Filibusterismo</h1>
-            <p className="text-xl text-blue-100">The Reign of Greed</p>
-            <p className="mt-4 text-blue-100">Written by Dr. Jose Rizal in 1891</p>
+            <h1 className="text-4xl font-bold mb-4">Noli Me Tangere</h1>
+            <p className="text-xl text-amber-100">Touch Me Not</p>
+            <p className="mt-4 text-amber-100">Written by Dr. Jose Rizal in 1887</p>
           </div>
         </div>
       </div>
@@ -215,11 +214,11 @@ export default function ElFilibusterismo() {
             <dl className="sm:divide-y sm:divide-gray-200">
               <div className="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                 <dt className="text-sm font-medium text-gray-500">Original Title</dt>
-                <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">El Filibusterismo</dd>
+                <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">Noli Me Tangere</dd>
               </div>
               <div className="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                 <dt className="text-sm font-medium text-gray-500">Published</dt>
-                <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">1891, Ghent, Belgium</dd>
+                <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">1887, Berlin, Germany</dd>
               </div>
               <div className="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                 <dt className="text-sm font-medium text-gray-500">Original Language</dt>
@@ -227,15 +226,7 @@ export default function ElFilibusterismo() {
               </div>
               <div className="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                 <dt className="text-sm font-medium text-gray-500">Genre</dt>
-                <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">Novel, Political fiction, Historical fiction</dd>
-              </div>
-              <div className="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                <dt className="text-sm font-medium text-gray-500">Preceded by</dt>
-                <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                  <Link to="/novels/noli-me-tangere" className="text-blue-600 hover:text-blue-800">
-                    Noli Me Tangere
-                  </Link>
-                </dd>
+                <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">Novel, Satire, Political fiction</dd>
               </div>
             </dl>
           </div>
@@ -248,14 +239,15 @@ export default function ElFilibusterismo() {
           </div>
           <div className="px-4 py-5 sm:p-6">
             <p className="text-gray-700">
-              El Filibusterismo is the sequel to Noli Me Tangere and the second novel written by Philippine national hero Jose Rizal. 
-              The novel's dark theme contrasts with Noli Me Tangere's hopeful tone, reflecting the author's growing pessimism about 
-              the possibility of reform under Spanish rule.
+              Noli Me Tangere is a novel written by Jose Rizal, one of the national heroes of the Philippines. 
+              The novel is a scathing indictment of the Catholic Church and Spanish colonial rule in the Philippines. 
+              It tells the story of Crisostomo Ibarra, a young Filipino who returns to the Philippines after studying in Europe 
+              and finds himself at odds with the corrupt Spanish friars and government officials who rule his hometown.
             </p>
             <p className="mt-4 text-gray-700">
-              The story follows the return of Crisostomo Ibarra as the wealthy jeweler Simoun, who seeks to foment a revolution 
-              against the Spanish colonial government. The novel explores themes of revolution, colonial oppression, and the moral 
-              choices faced by individuals under a corrupt system.
+              The novel explores themes of oppression, abuse of power, and the struggle for justice and reform. 
+              Through its vivid characters and dramatic plot, Noli Me Tangere exposes the social cancer plaguing 
+              Philippine society during the Spanish colonial period.
             </p>
           </div>
         </div>
@@ -266,20 +258,20 @@ export default function ElFilibusterismo() {
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             <div className="bg-white overflow-hidden shadow rounded-lg">
               <div className="px-4 py-5 sm:p-6">
-                <h3 className="text-lg font-medium text-blue-800">Simoun / Crisostomo Ibarra</h3>
-                <p className="mt-1 text-gray-600">The protagonist, who returns as the wealthy jeweler Simoun, seeking revenge against the Spanish colonial system.</p>
+                <h3 className="text-lg font-medium text-amber-800">Crisostomo Ibarra</h3>
+                <p className="mt-1 text-gray-600">The protagonist, a young Filipino who studied in Europe and returns to the Philippines to find his father dead and his country in the hands of corrupt officials.</p>
               </div>
             </div>
             <div className="bg-white overflow-hidden shadow rounded-lg">
               <div className="px-4 py-5 sm:p-6">
-                <h3 className="text-lg font-medium text-blue-800">Basilio</h3>
-                <p className="mt-1 text-gray-600">A medical student and former sacristan who becomes involved in Simoun's plans.</p>
+                <h3 className="text-lg font-medium text-amber-800">Maria Clara</h3>
+                <p className="mt-1 text-gray-600">Ibarra's love interest, the beautiful daughter of Captain Tiago and the goddaughter of Father Dámaso.</p>
               </div>
             </div>
             <div className="bg-white overflow-hidden shadow rounded-lg">
               <div className="px-4 py-5 sm:p-6">
-                <h3 className="text-lg font-medium text-blue-800">Father Florentino</h3>
-                <p className="mt-1 text-gray-600">A Filipino priest who represents Rizal's vision of an ideal clergy, offering wisdom and moral guidance.</p>
+                <h3 className="text-lg font-medium text-amber-800">Father Dámaso</h3>
+                <p className="mt-1 text-gray-600">A corrupt and cruel Spanish friar who wields significant power in San Diego.</p>
               </div>
             </div>
           </div>
@@ -289,7 +281,7 @@ export default function ElFilibusterismo() {
         <div className="mt-12 text-center">
           <Link 
             to="/works" 
-            className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+            className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-amber-600 hover:bg-amber-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500"
           >
             ← Back to Works
           </Link>
