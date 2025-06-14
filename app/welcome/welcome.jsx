@@ -1,23 +1,49 @@
 import { Link } from "react-router-dom";
 import { TypeAnimation } from 'react-type-animation';
-import { useEffect } from 'react';
+import { useEffect, useMemo, useCallback } from 'react';
 import Navbar from '../components/Navbar';
-
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ');
-}
+import { classNames, imageUtils, perfUtils } from '../utils';
 
 export function Welcome() {
-  useEffect(() => {
-    window.scrollTo(0, 0);
+  // Memoized scroll handler
+  const handleScrollToTop = useCallback(() => {
+    perfUtils.scrollToTop();
   }, []);
+
+  useEffect(() => {
+    handleScrollToTop();
+    
+    // Preload critical images immediately
+    imageUtils.preloadImages(imageUtils.criticalImages, true);
+    
+    // Lazy load other images after a delay
+    const timer = setTimeout(() => {
+      const nonCriticalImages = imageUtils.allImages.filter(
+        img => !imageUtils.criticalImages.includes(img)
+      );
+      imageUtils.preloadImages(nonCriticalImages, false);
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, [handleScrollToTop]);
+
+  // Memoized image sources for better performance
+  const imageSources = useMemo(() => ({
+    heroBackground: '/images/rizal-bg.png',
+    fullBackground: '/images/rizal-bg-full.png',
+    rizalSolo: '/images/rizal solo.png',
+    book: '/images/bok.png',
+    fight: '/images/fight.png',
+    quizBackground: '/images/quizbackground.png',
+    rizalQuestion: '/images/rizalquestion.png'
+  }), []);
 
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
 
       {/* Hero Section */}
-      <main className="min-h-screen bg-cover bg-center" style={{ backgroundImage: "url('/images/rizal-bg.png')" }}>
+      <main className="min-h-screen bg-cover bg-center" style={{ backgroundImage: `url('${imageSources.heroBackground}')` }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             {/* Empty div to maintain layout */}
@@ -41,10 +67,8 @@ export function Welcome() {
             </div>
           </div>
         </div>
-      </main>
-
-      {/* RA 1425 Section */}
-      <section id="bgpic" className="relative min-h-screen flex items-center justify-center bg-cover bg-center" style={{backgroundImage: "url('/images/rizal-bg-full.png')"}}>
+      </main>      {/* RA 1425 Section */}
+      <section id="bgpic" className="relative min-h-screen flex items-center justify-center bg-cover bg-center" style={{backgroundImage: `url('${imageSources.fullBackground}')`}}>
         {/* Content */}
         <div className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-8 lg:px-12">
           <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-start">
@@ -81,8 +105,6 @@ export function Welcome() {
               </p>
             </div>
 
-
-
             {/* Right side - CHED */}
             <div className="w-full lg:w-1/2 [text-shadow:_0_2px_8px_rgb(0_0_0_/_80%)] p-6 bg-black/30 backdrop-blur-sm rounded-xl">
               <div className="flex items-center mb-4">
@@ -117,9 +139,10 @@ export function Welcome() {
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <img 
-            src="/images/rizalquestion.png" 
+            src={imageSources.rizalQuestion}
             alt="Jose Rizal Background"
             className="w-full h-full object-cover"
+            loading="lazy"
           />
         </div>
         
@@ -129,9 +152,10 @@ export function Welcome() {
           <div className="w-full md:w-1/3 h-screen flex items-center justify-center p-4">
             <div className="transition-all duration-300 transform hover:scale-[1.02] hover:shadow-md hover:z-10">
               <img 
-                src="/images/rizal solo.png" 
+                src={imageSources.rizalSolo}
                 alt="Jose Rizal Portrait"
                 className="max-w-[80%] max-h-[80vh] object-contain transition-all duration-300"
+                loading="lazy"
               />
             </div>
           </div>
@@ -140,9 +164,10 @@ export function Welcome() {
           <div className="w-full md:w-1/3 h-screen flex items-center justify-center p-4">
             <div className="relative -left-8 transition-all duration-300 transform hover:scale-[1.02] hover:shadow-md hover:z-10">
               <img 
-                src="/images/bok.png" 
-                alt="Bok"
+                src={imageSources.book}
+                alt="Book"
                 className="max-w-full max-h-[90vh] object-contain transition-all duration-300"
+                loading="lazy"
               />
             </div>
           </div>
@@ -151,9 +176,10 @@ export function Welcome() {
           <div className="w-full md:w-1/3 h-screen flex items-center justify-center p-4">
             <div className="transition-all duration-300 transform hover:scale-[1.02] hover:shadow-md hover:z-10">
               <img 
-                src="/images/fight.png" 
+                src={imageSources.fight}
                 alt="Fight"
                 className="max-w-full max-h-[90vh] object-contain transition-all duration-300"
+                loading="lazy"
               />
             </div>
           </div>
@@ -162,7 +188,7 @@ export function Welcome() {
 
       {/* Genially Interactive Content */}
       <div className="w-full py-16 px-4 relative" style={{
-        backgroundImage: 'url(/images/quizbackground.png)',
+        backgroundImage: `url(${imageSources.quizBackground})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat'
@@ -180,6 +206,7 @@ export function Welcome() {
                 scrolling="yes"
                 allowScriptAccess="always"
                 allowNetworking="all"
+                loading="lazy"
               />
             </div>
           </div>

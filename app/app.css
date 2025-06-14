@@ -5,11 +5,39 @@
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
+/* Critical CSS - inline these styles */
 html,
 body {
   @apply bg-white dark:bg-gray-950;
+  /* Prevent FOUC */
+  visibility: visible;
+  /* Enable hardware acceleration */
+  transform: translateZ(0);
+  will-change: scroll-position;
 
   @media (prefers-color-scheme: dark) {
     color-scheme: dark;
   }
+}
+
+/* Performance optimizations */
+* {
+  /* Enable subpixel antialiasing */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Optimize image rendering */
+img {
+  /* Enable hardware acceleration for images */
+  transform: translateZ(0);
+  /* Optimize image rendering */
+  image-rendering: -webkit-optimize-contrast;
+}
+
+/* Critical layout styles */
+.min-h-screen {
+  /* Use 100vh for better performance than min-h-screen on mobile */
+  min-height: 100vh;
+  min-height: 100dvh; /* Dynamic viewport height for mobile */
 }

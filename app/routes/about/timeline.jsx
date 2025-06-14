@@ -1,11 +1,8 @@
 import { Link } from "react-router-dom";
-import { useEffect } from 'react';
+import { useEffect, memo, useMemo } from 'react';
 import Navbar from '../../components/Navbar';
 import { ArrowRightIcon } from "@heroicons/react/24/solid";
-
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ');
-}
+import { classNames, perfUtils } from '../../utils';
 
 export function meta() {
   return [
@@ -14,11 +11,13 @@ export function meta() {
   ];
 }
 
-export default function Timeline() {
+const Timeline = memo(() => {
   useEffect(() => {
-    window.scrollTo(0, 0);
+    perfUtils.scrollToTop();
   }, []);
-  const events = [
+
+  // Memoize events data to prevent recreation on re-renders
+  const events = useMemo(() => [
     {
       year: "June 19, 1861",
       title: "Birth",
@@ -79,7 +78,7 @@ export default function Timeline() {
       description: "Officially declared the national hero of the Philippines by the American colonial government.",
       icon: ""
     }
-  ];
+  ], []);
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -139,4 +138,8 @@ export default function Timeline() {
       </main>
     </div>
   );
-}
+});
+
+Timeline.displayName = 'Timeline';
+
+export default Timeline;

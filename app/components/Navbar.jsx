@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
 import { Menu, Transition } from '@headlessui/react';
-import { Fragment, useState } from 'react';
+import { Fragment, useState, memo, useCallback } from 'react';
 import { ChevronDownIcon, Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
+import { classNames } from '../utils';
 
-// Global styles for WebKit scrollbars
+// Global styles for WebKit scrollbars - memoized to prevent recreation
 const scrollbarStyles = `
   .scrollbar-thin::-webkit-scrollbar {
     width: 8px;
@@ -21,27 +22,33 @@ const scrollbarStyles = `
   }
 `;
 
-// Add styles to the document head
-if (typeof document !== 'undefined') {
+// Add styles to the document head only once
+if (typeof document !== 'undefined' && !document.querySelector('#navbar-scrollbar-styles')) {
   const styleElement = document.createElement('style');
+  styleElement.id = 'navbar-scrollbar-styles';
   styleElement.textContent = scrollbarStyles;
   document.head.appendChild(styleElement);
 }
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ');
-}
-
-// Mobile dropdown components
-function MobileNovelsDropdown({ onNavigate }) {
+// Mobile dropdown components - memoized for better performance
+const MobileNovelsDropdown = memo(({ onNavigate }) => {
   const [open, setOpen] = useState(false);
+
+  const handleClick = useCallback(() => {
+    setOpen(!open);
+  }, [open]);
+
+  const handleNavigate = useCallback(() => {
+    setOpen(false);
+    onNavigate();
+  }, [onNavigate]);
 
   return (
     <div className="space-y-2">
       <button
         type="button"
         className="flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base font-medium leading-7 text-[#4a2c11] hover:bg-[#d4b98a] font-serif italic"
-        onClick={() => setOpen(!open)}
+        onClick={handleClick}
       >
         Novels
         <ChevronDownIcon
@@ -53,20 +60,14 @@ function MobileNovelsDropdown({ onNavigate }) {
         <div className="mt-2 space-y-2 pl-6">
           <Link
             to="/novels/noli-me-tangere"
-            onClick={() => {
-              setOpen(false);
-              onNavigate();
-            }}
+            onClick={handleNavigate}
             className="block rounded-lg py-2 pl-3 pr-3.5 text-sm leading-7 text-[#4a2c11] hover:bg-[#d4b98a] font-serif italic"
           >
             Noli Me Tangere
           </Link>
           <Link
             to="/novels/el-filibusterismo"
-            onClick={() => {
-              setOpen(false);
-              onNavigate();
-            }}
+            onClick={handleNavigate}
             className="block rounded-lg py-2 pl-3 pr-3.5 text-sm leading-7 text-[#4a2c11] hover:bg-[#d4b98a] font-serif italic"
           >
             El Filibusterismo
@@ -75,7 +76,9 @@ function MobileNovelsDropdown({ onNavigate }) {
       )}
     </div>
   );
-}
+});
+
+MobileNovelsDropdown.displayName = 'MobileNovelsDropdown';
 
 function MobileAboutDropdown({ onNavigate }) {
   const [open, setOpen] = useState(false);

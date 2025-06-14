@@ -19,7 +19,18 @@ export const links = () => [
   {
     rel: "stylesheet",
     href: "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Rosarivo:ital,wght@0,400;0,700;1,400&display=swap",
+    // Add font-display for better loading performance
+    media: "print",
+    onLoad: "this.media='all'"
   },
+  // Preload critical font weights
+  {
+    rel: "preload",
+    href: "https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hiA.woff2",
+    as: "font",
+    type: "font/woff2",
+    crossOrigin: "anonymous"
+  }
 ];
 
 export function Layout({ children }) {
@@ -28,8 +39,35 @@ export function Layout({ children }) {
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="theme-color" content="#e8d8b5" />
+        <meta name="description" content="Learn about Dr. Jose Rizal, the national hero of the Philippines" />
+        
+        {/* Performance hints */}
+        <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+        <link rel="dns-prefetch" href="//fonts.gstatic.com" />
+        <link rel="dns-prefetch" href="//view.genial.ly" />
+        
         <Meta />
         <Links />
+        
+        {/* Service Worker Registration */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              if ('serviceWorker' in navigator) {
+                window.addEventListener('load', function() {
+                  navigator.serviceWorker.register('/sw.js')
+                    .then(function(registration) {
+                      console.log('SW registered: ', registration);
+                    })
+                    .catch(function(registrationError) {
+                      console.log('SW registration failed: ', registrationError);
+                    });
+                });
+              }
+            `,
+          }}
+        />
       </head>
       <body>
         {children}

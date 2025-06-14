@@ -49,7 +49,7 @@ const Biography = memo(() => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-            <Navbar />
+      <Navbar />
 
       {/* Hero Section */}
       <div className="bg-green-700 text-white">
