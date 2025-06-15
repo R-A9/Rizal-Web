@@ -11,19 +11,6 @@ export function meta() {
   ];
 }
 
-<<<<<<< HEAD
-const fadeInLeft = {
-  hidden: { opacity: 0, x: -30 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: 'easeOut' } }
-};
-
-const fadeInRight = {
-  hidden: { opacity: 0, x: 30 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: 'easeOut' } }
-};
-
-=======
->>>>>>> parent of 05bca67 (add timeline)
 const Timeline = memo(() => {
   useEffect(() => {
     perfUtils.scrollToTop();
@@ -114,23 +101,12 @@ const Timeline = memo(() => {
                       </span>
                     </div>
                     <div className="flex min-w-0 flex-1 justify-between pt-1.5">
-                      <div>
-                        <p className="text-sm text-gray-500">
+                      <div>                        <p className="text-sm text-gray-500">
                           {event.year}
                         </p>
                         <h3 className="text-lg font-medium text-gray-900">{event.title}</h3>
                         <p className="text-base text-gray-700">{event.description}</p>
                       </div>
-<<<<<<< HEAD
-                    </div>                    <div className="w-8 h-8 rounded-full bg-[#e8d8b5] flex items-center justify-center ring-8 ring-white z-20 md:mx-6 my-4">
-                      <span className="text-xs font-bold text-[#4a2c11]">•</span>
-                    </div>
-                  </motion.li>
-                );
-              })}
-            </ul>
-          </div>
-=======
                     </div>
                   </div>
                 </div>
@@ -138,7 +114,6 @@ const Timeline = memo(() => {
             ))}
           </ul>
         </div>
->>>>>>> parent of 05bca67 (add timeline)
 
         {/* Back to About Link */}
         <div className="mt-12 text-center">
