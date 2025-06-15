@@ -15,8 +15,26 @@ export default defineConfig({
   },
   
   build: {
+<<<<<<< HEAD
     target: 'es2022',
     reportCompressedSize: false,
+=======
+    target: 'esnext',
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          // Separate vendor chunks for better caching
+          react: ['react', 'react-dom'],
+          router: ['react-router', '@react-router/node'],
+          ui: ['@headlessui/react', '@heroicons/react', 'react-icons'],
+          animations: ['react-type-animation']
+        }
+      }
+    },
+    // Enable gzip compression
+    reportCompressedSize: true,
+    // Minify CSS
+>>>>>>> parent of bf5004f (FIna;lly)
     cssMinify: true,
     sourcemap: false
   },
