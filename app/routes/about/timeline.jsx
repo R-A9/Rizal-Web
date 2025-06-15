@@ -1,17 +1,17 @@
 import { Link } from "react-router";
 import { useEffect, memo, useMemo } from 'react';
 import Navbar from '../../components/Navbar';
-import { perfUtils } from '../../utils';
-import { motion } from 'framer-motion';
-import { ArrowRightIcon } from 'lucide-react';
+import { ArrowRightIcon } from "@heroicons/react/24/solid";
+import { classNames, perfUtils } from '../../utils';
 
 export function meta() {
   return [
     { title: "Timeline - Jose Rizal" },
-    { name: "description", content: "A timeline of the important events in the life of Dr. Jose Rizal." },
+    { name: "description", content: "A chronological timeline of important events in the life of Dr. Jose Rizal" },
   ];
 }
 
+<<<<<<< HEAD
 const fadeInLeft = {
   hidden: { opacity: 0, x: -30 },
   visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: 'easeOut' } }
@@ -22,11 +22,14 @@ const fadeInRight = {
   visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: 'easeOut' } }
 };
 
+=======
+>>>>>>> parent of 05bca67 (add timeline)
 const Timeline = memo(() => {
   useEffect(() => {
     perfUtils.scrollToTop();
   }, []);
 
+  // Memoize events data to prevent recreation on re-renders
   const events = useMemo(() => [
     {
       year: "June 19, 1861",
@@ -81,39 +84,44 @@ const Timeline = memo(() => {
   ], []);
 
   return (
-    <div className="min-h-screen bg-gray-50 relative">
-      <Navbar />
+    <div className="min-h-screen bg-gray-50">
+           <Navbar />
 
-      <div
-        className="bg-cover bg-center min-h-screen flex items-start justify-center px-4 sm:px-6 lg:px-8 py-12"
-        style={{ backgroundImage: `url('/images/Timeline.png')` }}
-      >
-        <main className="backdrop-blur-md bg-white/60 max-w-4xl w-full rounded-lg shadow-lg p-8 md:p-12">
-          <div className="text-center mb-10">
-            <h1 className="text-4xl font-bold mb-2" style={{ color: '#4a2c11' }}>Timeline - Jose Rizal</h1>
-            <p className="text-xl" style={{ color: '#4a2c11' }}>A chronological timeline of important events in the life of Dr. Jose Rizal</p>
+      {/* Hero Section */}
+      <div className="bg-purple-700 text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+          <div className="max-w-3xl">
+            <h1 className="text-4xl font-bold mb-4">Timeline of Jose Rizal's Life</h1>
+            <p className="text-xl text-purple-100">Key events in the life of the Philippine National Hero</p>
           </div>
+        </div>
+      </div>
 
-          <div className="relative">
-            <div className="absolute left-1/2 transform -translate-x-1/2 h-full border-l-4" style={{ borderColor: '#e8d8b5' }}></div>
-            <ul className="space-y-14 relative z-10">
-              {events.map((event, index) => {
-                const isLeft = index % 2 === 0;
-                return (
-                  <motion.li
-                    key={index}
-                    className={`flex flex-col md:flex-row items-center ${isLeft ? 'md:flex-row-reverse' : ''}`}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, amount: 0.2 }}
-                    variants={isLeft ? fadeInLeft : fadeInRight}
-                  >
-                    <div className="md:w-1/2 md:px-6">
-                      <div className="bg-white p-6 rounded-lg shadow-md">
-                        <p className="text-sm font-medium" style={{ color: '#4a2c11' }}>{event.year}</p>
-                        <h3 className="text-lg font-bold" style={{ color: '#4a2c11' }}>{event.title}</h3>
-                        <p className="text-base" style={{ color: '#4a2c11' }}>{event.description}</p>
+      {/* Main Content */}
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="flow-root">
+          <ul className="-mb-8">
+            {events.map((event, eventIdx) => (
+              <li key={eventIdx}>
+                <div className="relative pb-8">
+                  {eventIdx !== events.length - 1 ? (
+                    <span className="absolute top-4 left-4 -ml-px h-full w-0.5 bg-gray-200" aria-hidden="true" />
+                  ) : null}
+                  <div className="relative flex space-x-3">
+                    <div>
+                      <span className="h-8 w-8 rounded-full bg-purple-500 flex items-center justify-center ring-8 ring-white">
+                        <span className="text-white text-sm font-medium">{event.icon}</span>
+                      </span>
+                    </div>
+                    <div className="flex min-w-0 flex-1 justify-between pt-1.5">
+                      <div>
+                        <p className="text-sm text-gray-500">
+                          {event.year}
+                        </p>
+                        <h3 className="text-lg font-medium text-gray-900">{event.title}</h3>
+                        <p className="text-base text-gray-700">{event.description}</p>
                       </div>
+<<<<<<< HEAD
                     </div>                    <div className="w-8 h-8 rounded-full bg-[#e8d8b5] flex items-center justify-center ring-8 ring-white z-20 md:mx-6 my-4">
                       <span className="text-xs font-bold text-[#4a2c11]">•</span>
                     </div>
@@ -122,35 +130,26 @@ const Timeline = memo(() => {
               })}
             </ul>
           </div>
+=======
+                    </div>
+                  </div>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+>>>>>>> parent of 05bca67 (add timeline)
 
-          <div className="mt-12">
-            <h2 className="text-2xl font-bold text-[#4a2c11] mb-6 text-left">Extended Topics</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <Link to="/about/legacy" className="relative p-6 bg-white/90 rounded-lg shadow-md hover:shadow-xl transition-shadow border border-[#4a2c1110] hover:border-[#4a2c11]">
-                <h3 className="text-xl font-semibold text-[#4a2c11] mb-2">Legacy</h3>
-                <p className="text-[#4a2c11] pb-2">Discover how Rizal's political thoughts shaped Philippine history and continue to influence the nation.</p>
-                <ArrowRightIcon className="absolute bottom-4 right-4 w-5 h-5 text-[#4a2c11]" />
-              </Link>
-              <Link to="/about/biography" className="relative p-6 bg-white/90 rounded-lg shadow-md hover:shadow-xl transition-shadow border border-[#4a2c1110] hover:border-[#4a2c11]">
-                <h3 className="text-xl font-semibold text-[#4a2c11] mb-2">Biography</h3>
-                <p className="text-[#4a2c11] pb-2">Trace Rizal's journey from childhood to his final days and the legacy he left behind.</p>
-                <ArrowRightIcon className="absolute bottom-4 right-4 w-5 h-5 text-[#4a2c11]" />
-              </Link>
-              <Link to="/about/quotes" className="relative p-6 bg-white/90 rounded-lg shadow-md hover:shadow-xl transition-shadow border border-[#4a2c1110] hover:border-[#4a2c11]">
-                <h3 className="text-xl font-semibold text-[#4a2c11] mb-2">Quotes</h3>
-                <p className="text-[#4a2c11] pb-2">Read powerful quotes that reflect Rizal's political philosophy and vision.</p>
-                <ArrowRightIcon className="absolute bottom-4 right-4 w-5 h-5 text-[#4a2c11]" />
-              </Link>
-              <Link to="/novels/el-filibusterismo" className="relative p-6 bg-white/90 rounded-lg shadow-md hover:shadow-xl transition-shadow border border-[#4a2c1110] hover:border-[#4a2c11]">
-                <h3 className="text-xl font-semibold text-[#4a2c11] mb-2">El Filibusterismo</h3>
-                <p className="text-[#4a2c11] pb-2">Explore Rizal's second novel that delves into political themes and social issues.</p>
-                <ArrowRightIcon className="absolute bottom-4 right-4 w-5 h-5 text-[#4a2c11]" />
-              </Link>
-            </div>
-          </div>
-
-        </main>
-      </div>
+        {/* Back to About Link */}
+        <div className="mt-12 text-center">
+          <Link 
+            to="/about" 
+            className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-purple-600 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500"
+          >
+            ← Back to About
+          </Link>
+        </div>
+      </main>
     </div>
   );
 });

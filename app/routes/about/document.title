@@ -1,3 +1,0 @@
-useEffect(() => {
-  document.title = "Timeline - Jose Rizal";
-}, []);
