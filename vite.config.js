@@ -21,11 +21,15 @@ export default defineConfig({
   optimizeDeps: {
     include: ['react', 'react-dom', 'react-router', '@headlessui/react', '@heroicons/react'],
     esbuildOptions: {
-      target: 'esnext'
+      target: 'es2022'
     }
   },
   
   build: {
+<<<<<<< HEAD
+    target: 'es2022',
+    reportCompressedSize: false,
+=======
     target: 'esnext',
     rollupOptions: {
       output: {
@@ -41,9 +45,9 @@ export default defineConfig({
     // Enable gzip compression
     reportCompressedSize: true,
     // Minify CSS
+>>>>>>> parent of bf5004f (FIna;lly)
     cssMinify: true,
-    // Source maps only in development
-    sourcemap: process.env.NODE_ENV === 'development'
+    sourcemap: false
   },
   
   // Enable asset optimization
@@ -51,9 +55,13 @@ export default defineConfig({
   
   // Server configuration for development
   server: {
+<<<<<<< HEAD
     // Enable HTTP/2 in development
     https: false,
     // Preload modules
     preTransformRequests: true
+=======
+    https: false
+>>>>>>> 8fc9ff3697bad57ab3ece5061ca93d475f8894b6
   }
 });
