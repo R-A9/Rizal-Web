@@ -1,21 +1,13 @@
 {
   "buildCommand": "npm run build",
   "outputDirectory": "build/client",
-  "installCommand": "npm ci",
-  "framework": null,
   "functions": {
     "build/server/index.js": {
-      "runtime": "nodejs20.x",
-      "maxDuration": 10
+      "runtime": "nodejs20.x"
     }
   },
   "routes": [
-    {
-      "handle": "filesystem"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/build/server/index.js"
-    }
+    { "handle": "filesystem" },
+    { "src": "/(.*)", "dest": "/build/server/index.js" }
   ]
 }
