@@ -244,129 +244,132 @@ export function Welcome() {
   </div>
 
   {/* Title Section - "Did You Know?" */}
-  <motion.div 
-    variants={fadeIn}
-    className="relative z-10 pt-20 text-center"
-  >
-    <h2 className="text-4xl md:text-5xl font-bold text-amber-50 font-serif mb-4">
-      Did You Know?
-    </h2>
-    <div className="w-24 h-1 bg-amber-400 mx-auto mb-12"></div>
-  </motion.div>
-  
-  {/* Content Overlay */}
-  <motion.div 
-    variants={fadeIn}
-    className="relative z-10 h-full flex flex-col md:flex-row"
-  >
-    {/* Left Container - Rizal */}
-    <motion.div 
-      className="w-full md:w-1/3 h-[70vh] flex items-center justify-center p-4"
-      whileHover="hover"
-      initial="rest"
-    >
-      <div className="relative w-full h-full flex items-center justify-center">
-        {/* Image */}
-        <motion.img 
-          src={imageSources.rizalSolo}
-          alt="Jose Rizal Portrait"
-          className="absolute max-w-[80%] max-h-[80%] object-contain cursor-pointer"
-          loading="lazy"
-          variants={{
-            rest: { opacity: 1, scale: 1 },
-            hover: { opacity: 0, scale: 0.95 }
-          }}
-          transition={{ duration: 0.3 }}
-        />
-        {/* Text Content */}
-        <motion.div
-          className="absolute bg-amber-100/90 p-8 rounded-lg max-w-[80%] border-2 border-amber-800 shadow-lg cursor-pointer"
-          variants={{
-            rest: { opacity: 0, y: 20 },
-            hover: { opacity: 1, y: 0 }
-          }}
-          transition={{ duration: 0.3 }}
-        >
-          <h3 className="text-2xl font-bold text-amber-900 mb-2 font-serif">José Rizal</h3>
-          <p className="text-amber-800">
-            Jose Rizal is a Multilingual, Rizal was a hyperpolyglot, speaking and writing in 22 languages, including Spanish, French, German, Greek, and Latin. 
-          </p>
-        </motion.div>
-      </div>
-    </motion.div>
+<motion.div 
+  variants={fadeIn}
+  className="relative z-10 pt-20 text-center"
+>
+  <h2 className="text-4xl md:text-5xl font-bold text-amber-50 font-serif mb-4">
+    Did You Know?
+  </h2>
+  <div className="w-24 h-1 bg-amber-400 mx-auto mb-12"></div>
+</motion.div>
 
-    {/* Middle Container - Book */}
-    <motion.div 
-      className="w-full md:w-1/3 h-[70vh] flex items-center justify-center p-4"
-      whileHover="hover"
-      initial="rest"
-    >
-      <div className="relative w-full h-full flex items-center justify-center">
-        {/* Image */}
-        <motion.img 
-          src={imageSources.book}
-          alt="Noli Me Tangere Book"
-          className="absolute max-w-[80%] max-h-[80%] object-contain cursor-pointer"
-          loading="lazy"
-          variants={{
-            rest: { opacity: 1, scale: 1 },
-            hover: { opacity: 0, scale: 0.95 }
-          }}
-          transition={{ duration: 0.3 }}
-        />
-        {/* Text Content */}
-        <motion.div
-          className="absolute bg-amber-100/90 p-8 rounded-lg max-w-[80%] border-2 border-amber-800 shadow-lg cursor-pointer"
-          variants={{
-            rest: { opacity: 0, y: 20 },
-            hover: { opacity: 1, y: 0 }
-          }}
-          transition={{ duration: 0.3 }}
-        >
-          <h3 className="text-2xl font-bold text-amber-900 mb-2 font-serif">Unifinished Novel</h3>
-          <p className="text-amber-800">
-            Rizal had Noli Me tangere and El filibusterismo, but rizal had a third, unfinished novel.
-          </p>
-        </motion.div>
-      </div>
-    </motion.div>
-
-    {/* Right Container - Fight */}
-    <motion.div 
-      className="w-full md:w-1/3 h-[70vh] flex items-center justify-center p-4"
-      whileHover="hover"
-      initial="rest"
-    >
-      <div className="relative w-full h-full flex items-center justify-center">
-        {/* Image */}
-        <motion.img 
-          src={imageSources.fight}
-          alt="Philippine Revolution"
-          className="absolute max-w-[80%] max-h-[80%] object-contain cursor-pointer"
-          loading="lazy"
-          variants={{
-            rest: { opacity: 1, scale: 1 },
-            hover: { opacity: 0, scale: 0.95 }
-          }}
-          transition={{ duration: 0.3 }}
-        />
-        {/* Text Content */}
-        <motion.div
-          className="absolute bg-amber-100/90 p-8 rounded-lg max-w-[80%] border-2 border-amber-800 shadow-lg cursor-pointer"
-          variants={{
-            rest: { opacity: 0, y: 20 },
-            hover: { opacity: 1, y: 0 }
-          }}
-          transition={{ duration: 0.3 }}
-        >
-          <h3 className="text-2xl font-bold text-amber-900 mb-2 font-serif">Luna And Rizal</h3>
-          <p className="text-amber-800">
-            General Luna and Jose Rizal almost killed each other because of the same woman. Rizal challenged Luna to a duel but it was also interrupted because they were separated.
-          </p>
-        </motion.div>
-      </div>
-    </motion.div>
+{/* Content Overlay */}
+<motion.div 
+  variants={fadeIn}
+  className="relative z-10 h-full flex flex-col md:flex-row"
+>
+  {/* Left Container - Rizal */}
+  <motion.div 
+    className="w-full md:w-1/3 h-[70vh] flex items-center justify-center p-4"
+    whileHover="hover"
+    whileTap="hover" // Added for mobile touch
+    initial="rest"
+  >
+    <div className="relative w-full h-full flex items-center justify-center">
+      {/* Image */}
+      <motion.img 
+        src={imageSources.rizalSolo}
+        alt="Jose Rizal Portrait"
+        className="absolute max-w-[80%] max-h-[80%] object-contain cursor-pointer"
+        loading="lazy"
+        variants={{
+          rest: { opacity: 1, scale: 1 },
+          hover: { opacity: 0, scale: 0.95 }
+        }}
+        transition={{ duration: 0.3 }}
+      />
+      {/* Text Content */}
+      <motion.div
+        className="absolute bg-amber-100/90 p-8 rounded-lg max-w-[80%] border-2 border-amber-800 shadow-lg cursor-pointer"
+        variants={{
+          rest: { opacity: 0, y: 20 },
+          hover: { opacity: 1, y: 0 }
+        }}
+        transition={{ duration: 0.3 }}
+      >
+        <h3 className="text-2xl font-bold text-amber-900 mb-2 font-serif">José Rizal</h3>
+        <p className="text-amber-800">
+          Jose Rizal is a Multilingual, Rizal was a hyperpolyglot, speaking and writing in 22 languages, including Spanish, French, German, Greek, and Latin. 
+        </p>
+      </motion.div>
+    </div>
   </motion.div>
+
+  {/* Middle Container - Book */}
+  <motion.div 
+    className="w-full md:w-1/3 h-[70vh] flex items-center justify-center p-4"
+    whileHover="hover"
+    whileTap="hover" // Added for mobile touch
+    initial="rest"
+  >
+    <div className="relative w-full h-full flex items-center justify-center">
+      {/* Image */}
+      <motion.img 
+        src={imageSources.book}
+        alt="Noli Me Tangere Book"
+        className="absolute max-w-[80%] max-h-[80%] object-contain cursor-pointer"
+        loading="lazy"
+        variants={{
+          rest: { opacity: 1, scale: 1 },
+          hover: { opacity: 0, scale: 0.95 }
+        }}
+        transition={{ duration: 0.3 }}
+      />
+      {/* Text Content */}
+      <motion.div
+        className="absolute bg-amber-100/90 p-8 rounded-lg max-w-[80%] border-2 border-amber-800 shadow-lg cursor-pointer"
+        variants={{
+          rest: { opacity: 0, y: 20 },
+          hover: { opacity: 1, y: 0 }
+        }}
+        transition={{ duration: 0.3 }}
+      >
+        <h3 className="text-2xl font-bold text-amber-900 mb-2 font-serif">Unifinished Novel</h3>
+        <p className="text-amber-800">
+          Rizal had Noli Me tangere and El filibusterismo, but rizal had a third, unfinished novel.
+        </p>
+      </motion.div>
+    </div>
+  </motion.div>
+
+  {/* Right Container - Fight */}
+  <motion.div 
+    className="w-full md:w-1/3 h-[70vh] flex items-center justify-center p-4"
+    whileHover="hover"
+    whileTap="hover" // Added for mobile touch
+    initial="rest"
+  >
+    <div className="relative w-full h-full flex items-center justify-center">
+      {/* Image */}
+      <motion.img 
+        src={imageSources.fight}
+        alt="Philippine Revolution"
+        className="absolute max-w-[80%] max-h-[80%] object-contain cursor-pointer"
+        loading="lazy"
+        variants={{
+          rest: { opacity: 1, scale: 1 },
+          hover: { opacity: 0, scale: 0.95 }
+        }}
+        transition={{ duration: 0.3 }}
+      />
+      {/* Text Content */}
+      <motion.div
+        className="absolute bg-amber-100/90 p-8 rounded-lg max-w-[80%] border-2 border-amber-800 shadow-lg cursor-pointer"
+        variants={{
+          rest: { opacity: 0, y: 20 },
+          hover: { opacity: 1, y: 0 }
+        }}
+        transition={{ duration: 0.3 }}
+      >
+        <h3 className="text-2xl font-bold text-amber-900 mb-2 font-serif">Luna And Rizal</h3>
+        <p className="text-amber-800">
+          General Luna and Jose Rizal almost killed each other because of the same woman. Rizal challenged Luna to a duel but it was also interrupted because they were separated.
+        </p>
+      </motion.div>
+    </div>
+  </motion.div>
+</motion.div>
 </motion.section>
 
       {/* Genially Interactive Content */}
