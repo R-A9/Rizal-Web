@@ -7,8 +7,19 @@ export default defineConfig({
     tailwindcss(), 
     reactRouter()
   ],
-  
   optimizeDeps: {
+    include: [
+      'react',
+      'react-dom',
+      'react-router',
+      '@headlessui/react'
+    ],
+    exclude: [
+      'framer-motion',
+      'lucide-react',
+      '@heroicons/react',
+      'react-type-animation'
+    ],
     esbuildOptions: {
       target: 'esnext'
     }
@@ -36,16 +47,11 @@ export default defineConfig({
   
   // Enable asset optimization
   assetsInclude: ['**/*.webp', '**/*.avif'],
-  
-  // Server configuration for development
+    // Server configuration for development
   server: {
     // Enable HTTP/2 in development
     https: false,
     // Preload modules
-    preTransformRequests: true,
-    // Optimize deps
-    optimizeDeps: {
-      include: ['react', 'react-dom', 'react-router']
-    }
+    preTransformRequests: true
   }
 });
