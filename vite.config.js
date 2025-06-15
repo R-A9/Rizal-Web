@@ -23,21 +23,8 @@ export default defineConfig({
     esbuildOptions: {
       target: 'esnext'
     }
-  },
-  
-  build: {
+  },  build: {
     target: 'esnext',
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          // Separate vendor chunks for better caching
-          react: ['react', 'react-dom'],
-          router: ['react-router', '@react-router/node'],
-          ui: ['@headlessui/react', '@heroicons/react', 'react-icons'],
-          animations: ['react-type-animation']
-        }
-      }
-    },
     // Enable gzip compression
     reportCompressedSize: true,
     // Minify CSS
