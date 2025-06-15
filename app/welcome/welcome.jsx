@@ -155,13 +155,12 @@ export function Welcome() {
           variants={scaleUp}
           className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-8 lg:px-12"
         >
-          <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-start">
-            {/* Left side - RA 1425 */}
+          <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-start">            {/* Left side - RA 1425 */}
             <motion.div 
               whileHover={{ y: -5 }}
-              className="w-full lg:w-1/2 text-white p-6 bg-black/40 backdrop-blur-md rounded-xl border border-amber-600/30 shadow-xl"
+              className="w-full lg:w-1/2 bg-white p-6 rounded-lg shadow-xl border-t-4 border-amber-800 hover:shadow-2xl transition-all duration-300 flex flex-col min-h-[250px]"
             >
-              <h2 className="text-2xl font-bold text-amber-300 mb-4">
+              <h2 className="text-2xl font-bold text-amber-900 mb-4 font-serif">
                 <TypeAnimation
                   sequence={['Republic Act No. 1425']}
                   wrapper="span"
@@ -170,7 +169,7 @@ export function Welcome() {
                   style={{ display: 'inline-block' }}
                 />
               </h2>
-              <div className="mb-4 min-h-[100px] text-base leading-relaxed">
+              <div className="mb-4 flex-grow text-base leading-relaxed text-amber-800 font-serif">
                 <TypeAnimation
                   sequence={[
                     'An act to include in the curricula of all public and private schools, colleges and universities courses on the life, works and writings of Jose Rizal, particularly his novels Noli Me Tangere and El Filibusterismo, authorizing the printing and distribution thereof, and for other purposes.',
@@ -181,7 +180,7 @@ export function Welcome() {
                   style={{ whiteSpace: 'pre-line', display: 'block' }}
                 />
               </div>
-              <p className="text-sm text-amber-200">
+              <p className="text-sm text-amber-700 font-serif italic mt-auto">
                 <TypeAnimation
                   sequence={['Approved on June 12, 1956']}
                   wrapper="span"
@@ -196,20 +195,18 @@ export function Welcome() {
             <motion.div 
               whileHover={{ y: -5 }}
               transition={{ delay: 0.1 }}
-              className="w-full lg:w-1/2 p-6 bg-black/40 backdrop-blur-md rounded-xl border border-amber-600/30 shadow-xl"
+              className="w-full lg:w-1/2 bg-white p-6 rounded-lg shadow-xl border-t-4 border-amber-800 hover:shadow-2xl transition-all duration-300 flex flex-col min-h-[250px]"
             >
-              <div className="flex items-center mb-4">
-                <h3 className="text-xl font-bold text-white">
-                  <TypeAnimation
-                    sequence={['Commission on Higher Education']}
-                    wrapper="span"
-                    cursor={false}
-                    speed={50}
-                    style={{ display: 'inline-block' }}
-                  />
-                </h3>
-              </div>
-              <div className="min-h-[100px] text-base leading-relaxed">
+              <h3 className="text-2xl font-bold text-amber-900 mb-4 font-serif">
+                <TypeAnimation
+                  sequence={['Commission on Higher Education']}
+                  wrapper="span"
+                  cursor={false}
+                  speed={50}
+                  style={{ display: 'inline-block' }}
+                />
+              </h3>
+              <div className="flex-grow text-base leading-relaxed text-amber-800 font-serif">
                 <TypeAnimation
                   sequence={[
                     'This website is sponsored by the Commission on Higher Education (CHED) to help students understand the life, works, and writings of Dr. Jose Rizal, the national hero of the Philippines, and his significant contributions to Philippine history and national identity.',
@@ -220,6 +217,7 @@ export function Welcome() {
                   style={{ whiteSpace: 'pre-line', display: 'block' }}
                 />
               </div>
+              <div className="mt-auto h-6"></div>
             </motion.div>
           </div>
         </motion.div>
