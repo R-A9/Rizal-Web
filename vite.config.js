@@ -8,13 +8,36 @@ export default defineConfig({
     reactRouter()
   ],
   
+  // Define JSX settings
+  define: {
+    __DEV__: process.env.NODE_ENV !== 'production',
+  },
+  
+  // React-specific settings
+  esbuild: {
+    jsxDev: process.env.NODE_ENV === 'development',
+  },
+  
   optimizeDeps: {
+    include: ['react', 'react-dom', 'react-router', '@headlessui/react', '@heroicons/react'],
     esbuildOptions: {
       target: 'esnext'
     }
   },
+  
   build: {
     target: 'esnext',
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          // Separate vendor chunks for better caching
+          react: ['react', 'react-dom'],
+          router: ['react-router', '@react-router/node'],
+          ui: ['@headlessui/react', '@heroicons/react', 'react-icons'],
+          animations: ['react-type-animation']
+        }
+      }
+    },
     // Enable gzip compression
     reportCompressedSize: true,
     // Minify CSS
@@ -31,10 +54,6 @@ export default defineConfig({
     // Enable HTTP/2 in development
     https: false,
     // Preload modules
-    preTransformRequests: true,
-    // Optimize deps
-    optimizeDeps: {
-      include: ['react', 'react-dom', 'react-router']
-    }
+    preTransformRequests: true
   }
 });

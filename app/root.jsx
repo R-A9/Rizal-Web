@@ -46,7 +46,7 @@ export function Layout({ children }) {
         <link rel="dns-prefetch" href="//fonts.googleapis.com" />
         <link rel="dns-prefetch" href="//fonts.gstatic.com" />
         <link rel="dns-prefetch" href="//view.genial.ly" />
-          <Meta />
+        <Meta />
         <Links />
         
         {/* Service Worker Registration - Only in production */}
@@ -65,6 +65,22 @@ export function Layout({ children }) {
                       });
                   });
                 }
+              `,
+            }}
+          />
+        )}
+        
+        {/* React error boundary debugging */}
+        {process.env.NODE_ENV === 'development' && (
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+                window.addEventListener('error', function(e) {
+                  console.error('Global error:', e.error);
+                });
+                window.addEventListener('unhandledrejection', function(e) {
+                  console.error('Unhandled promise rejection:', e.reason);
+                });
               `,
             }}
           />

@@ -2,6 +2,7 @@ import { index, route } from "@react-router/dev/routes";
 
 export default [
   index("routes/home.jsx"),
+  route("about", "routes/about.jsx"),
   route("works", "routes/works.jsx"),
   route("novels/noli-me-tangere", "routes/novels/noli-me-tangere.jsx"),
   route("novels/el-filibusterismo", "routes/novels/el-filibusterismo.jsx"),

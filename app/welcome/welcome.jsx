@@ -197,15 +197,11 @@ export function Welcome() {
         <div className="max-w-5xl mx-auto relative">
           <h2 className="text-3xl font-bold text-center mb-8 text-black font-serif drop-shadow-md">Do You Know Rizal?</h2>
           <div className="w-full bg-white/90 p-4 rounded-lg shadow-xl">
-            <div className="relative pb-[56.25%] pt-0 h-0">
-              <iframe 
+            <div className="relative pb-[56.25%] pt-0 h-0">              <iframe 
                 title="Do you know Rizal?"
                 className="absolute top-0 left-0 w-full h-full border-0"
                 src="https://view.genial.ly/658196a63efd51001456a7b0"
                 allowFullScreen
-                scrolling="yes"
-                allowScriptAccess="always"
-                allowNetworking="all"
                 loading="lazy"
               />
             </div>
