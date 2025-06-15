@@ -122,20 +122,13 @@ export function Welcome() {
                 className="pt-4"
               >
                 <Link 
-<<<<<<< HEAD
-                  to="explore" 
-                  onClick={handleExploreClick} // call out  the smooth scroll handler
-                  className="inline-flex items-center px-6 py-3 border-2 border-none 
-               text-base font-medium rounded-md text-[#4a2c11] bg-[#d4b98a]
-               hover:bg-[#4a2c11] hover:border-none hover:text-white
-      
-              transition-all duration-300 ease-in-out 
-              hover:scale-105 hover:shadow-xl hover:shadow-[#4a2c11]/50
-              hover:-translate-y-1"
-=======
                   to="/about" 
-                  className="inline-flex items-center px-8 py-3 border-2 border-blue-700 text-base font-medium rounded-md text-white bg-blue-700 hover:bg-amber-600 md:py-4 md:text-lg md:px-10 transition-all duration-300 hover:shadow-lg hover:shadow-amber-500/30 transform hover:-translate-y-1"
->>>>>>> ed9bd8013dc52020f337a3c530d034ad4be2f56e
+                  className="inline-flex items-center px-6 py-3 border-2 border-none
+             text-base font-medium rounded-md text-[#4a2c11] bg-[#d4b98a] 
+             hover:bg-[#4a2c11] hover:border-amber-600 hover:text-white
+             transition-all duration-300 ease-in-out 
+             hover:scale-105 hover:shadow-xl hover:shadow-[#d4b98a] 
+             hover:-translate-y-1"
                 >
                   EXPLORE
                 </Link>
