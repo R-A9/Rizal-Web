@@ -10,17 +10,24 @@ export default defineConfig({
   
   optimizeDeps: {
     esbuildOptions: {
-      target: 'esnext'
+      target: 'es2022'
     }
   },
+  
   build: {
-    target: 'esnext',
-    // Enable gzip compression
-    reportCompressedSize: true,
-    // Minify CSS
+    target: 'es2022',
+    // Reduce bundle size for serverless
+    reportCompressedSize: false,
     cssMinify: true,
-    // Source maps only in development
-    sourcemap: process.env.NODE_ENV === 'development'
+    sourcemap: false,
+    // Optimize for serverless
+    minify: 'terser',
+    terserOptions: {
+      compress: {
+        drop_console: true,
+        drop_debugger: true
+      }
+    }
   },
   
   // Enable asset optimization
@@ -28,13 +35,13 @@ export default defineConfig({
   
   // Server configuration for development
   server: {
-    // Enable HTTP/2 in development
     https: false,
-    // Preload modules
-    preTransformRequests: true,
-    // Optimize deps
-    optimizeDeps: {
-      include: ['react', 'react-dom', 'react-router']
-    }
+    // Reduce memory usage
+    preTransformRequests: false
+  },
+  
+  // Reduce memory usage
+  esbuild: {
+    logLevel: 'error'
   }
 });

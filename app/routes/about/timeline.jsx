@@ -13,13 +13,13 @@ export function meta() {
 }
 
 const fadeInLeft = {
-  hidden: { opacity: 0, x: -50 },
-  visible: { opacity: 1, x: 0, transition: { duration: 2.5, ease: 'easeOut' } }
+  hidden: { opacity: 0, x: -30 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: 'easeOut' } }
 };
 
 const fadeInRight = {
-  hidden: { opacity: 0, x: 50 },
-  visible: { opacity: 1, x: 0, transition: { duration: 2.5, ease: 'easeOut' } }
+  hidden: { opacity: 0, x: 30 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: 'easeOut' } }
 };
 
 const Timeline = memo(() => {
@@ -31,62 +31,52 @@ const Timeline = memo(() => {
     {
       year: "June 19, 1861",
       title: "Birth",
-      description: "Jose Protacio Rizal Mercado y Alonso Realonda was born in Calamba, Laguna, Philippines.",
-      icon: ""
+      description: "Jose Protacio Rizal Mercado y Alonso Realonda was born in Calamba, Laguna, Philippines."
     },
     {
       year: "1870",
       title: "Early Education",
-      description: "Began his early education in Calamba and Biñan under the guidance of Justiniano Aquino Cruz.",
-      icon: ""
+      description: "Began his early education in Calamba and Biñan under the guidance of Justiniano Aquino Cruz."
     },
     {
       year: "1872",
       title: "Ateneo Municipal de Manila",
-      description: "Enrolled at the Ateneo Municipal de Manila where he earned a Bachelor of Arts degree.",
-      icon: ""
+      description: "Enrolled at the Ateneo Municipal de Manila where he earned a Bachelor of Arts degree."
     },
     {
       year: "1877-1882",
       title: "University of Santo Tomas",
-      description: "Studied Philosophy and Letters and later Medicine at the University of Santo Tomas.",
-      icon: ""
+      description: "Studied Philosophy and Letters and later Medicine at the University of Santo Tomas."
     },
     {
       year: "1882-1885",
       title: "Studies in Spain",
-      description: "Traveled to Spain and enrolled at the Universidad Central de Madrid, earning a degree in Medicine.",
-      icon: ""
+      description: "Traveled to Spain and enrolled at the Universidad Central de Madrid, earning a degree in Medicine."
     },
     {
       year: "1887",
       title: "Noli Me Tangere Published",
-      description: "Published his first novel 'Noli Me Tangere' in Berlin, Germany.",
-      icon: ""
+      description: "Published his first novel 'Noli Me Tangere' in Berlin, Germany."
     },
     {
       year: "1891",
       title: "El Filibusterismo Published",
-      description: "Published his second novel 'El Filibusterismo' in Ghent, Belgium.",
-      icon: ""
+      description: "Published his second novel 'El Filibusterismo' in Ghent, Belgium."
     },
     {
       year: "1892",
       title: "Exile to Dapitan",
-      description: "Founded La Liga Filipina and was subsequently exiled to Dapitan, Mindanao by Spanish authorities.",
-      icon: ""
+      description: "Founded La Liga Filipina and was subsequently exiled to Dapitan, Mindanao by Spanish authorities."
     },
     {
       year: "1896",
       title: "Arrest and Execution",
-      description: "Arrested, tried, and executed by firing squad on December 30 in Bagumbayan (now Rizal Park), Manila.",
-      icon: ""
+      description: "Arrested, tried, and executed by firing squad on December 30 in Bagumbayan (now Rizal Park), Manila."
     },
     {
       year: "1911",
       title: "National Hero",
-      description: "Officially declared the national hero of the Philippines by the American colonial government.",
-      icon: ""
+      description: "Officially declared the national hero of the Philippines by the American colonial government."
     }
   ], []);
 
@@ -124,9 +114,8 @@ const Timeline = memo(() => {
                         <h3 className="text-lg font-bold" style={{ color: '#4a2c11' }}>{event.title}</h3>
                         <p className="text-base" style={{ color: '#4a2c11' }}>{event.description}</p>
                       </div>
-                    </div>
-                    <div className="w-8 h-8 rounded-full text-white flex items-center justify-center ring-8 ring-white z-20 md:mx-6 my-4" style={{ backgroundColor: "#e8d8b5" }}>
-                      <span className="text-xs font-bold uppercase">{event.icon}</span>
+                    </div>                    <div className="w-8 h-8 rounded-full bg-[#e8d8b5] flex items-center justify-center ring-8 ring-white z-20 md:mx-6 my-4">
+                      <span className="text-xs font-bold text-[#4a2c11]">•</span>
                     </div>
                   </motion.li>
                 );
