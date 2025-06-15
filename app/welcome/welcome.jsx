@@ -38,6 +38,14 @@ export function Welcome() {
     rizalQuestion: '/images/rizalquestion.png'
   }), []);
 
+   // For the smooth scroll effect of Explore button
+  const handleExploreClick = (e) => {
+    e.preventDefault();                              
+    document
+      .getElementById("explore")                    
+      ?.scrollIntoView({ behavior: "smooth" });     
+  };
+
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
@@ -58,8 +66,15 @@ export function Welcome() {
               </p>
               <div className="pt-4">
                 <Link 
-                  to="/about" 
-                  className="inline-flex items-center px-8 py-3 border-2 border-blue-800 text-base font-medium rounded-md text-white bg-blue-800 hover:bg-amber-700 md:py-4 md:text-lg md:px-10 transition-all duration-200 hover:shadow-lg hover:shadow-amber-500/30"
+                  to="#explore" 
+                  onClick={handleExploreClick} // call out  the smooth scroll handler
+                  className="inline-flex items-center px-6 py-3 border-2 border-none 
+               text-base font-medium rounded-md text-[#4a2c11] bg-[#d4b98a]
+               hover:bg-[#4a2c11] hover:border-none hover:text-white
+      
+              transition-all duration-300 ease-in-out 
+              hover:scale-105 hover:shadow-xl hover:shadow-[#4a2c11]/50
+              hover:-translate-y-1"
                 >
                   EXPLORE
                 </Link>
@@ -67,7 +82,9 @@ export function Welcome() {
             </div>
           </div>
         </div>
-      </main>      {/* RA 1425 Section */}
+      </main>    
+        {/* RA 1425 Section */}
+        <section id="explore">
       <section id="bgpic" className="relative min-h-screen flex items-center justify-center bg-cover bg-center" style={{backgroundImage: `url('${imageSources.fullBackground}')`}}>
         {/* Content */}
         <div className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-8 lg:px-12">
@@ -132,6 +149,7 @@ export function Welcome() {
             </div>
           </div>
         </div>
+        </section>
       </section>
 
       {/* Image Collage with Background */}
