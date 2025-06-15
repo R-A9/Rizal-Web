@@ -4,11 +4,11 @@
   "type": "module",  "engines": {
     "node": ">=18.0.0",
     "npm": ">=8.0.0"
-  },"scripts": {
+  },  "scripts": {
     "build": "react-router build",
     "build:vercel": "react-router build --mode=production",
     "dev": "cross-env NODE_OPTIONS=--experimental-vm-modules react-router dev",
-    "start": "react-router-serve ./build/server/server/index.js",
+    "start": "npx serve build/client -s",
     "optimize:images": "node scripts/optimize-images.js",
     "perf:audit": "node scripts/performance-audit.js"
   },
@@ -25,11 +25,11 @@
     "react-icons": "^5.5.0",
     "react-router": "^7.5.3",
     "react-type-animation": "^3.2.0"
-  },
-  "devDependencies": {
+  },  "devDependencies": {
     "@react-router/dev": "^7.5.3",
     "@tailwindcss/vite": "^4.1.10",
     "cross-env": "^7.0.3",
+    "serve": "^14.2.1",
     "sharp": "^0.33.5",
     "tailwindcss": "^4.1.10",
     "terser": "^5.37.0",

@@ -1,12 +1,9 @@
 /** @type {import('@react-router/dev/config').Config} */
 export default {
   // Server-side render by default, to enable SPA mode set this to `false`
-  ssr: true,
+  ssr: false,
   
-  // Vercel deployment configuration
-  serverBuildFile: "server/index.js",
-  
-  // Build configuration for Vercel
+  // Build configuration for SPA mode
   future: {
     v3_fetcherPersist: true,
     v3_relativeSplatPath: true,
