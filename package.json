@@ -1,10 +1,10 @@
 {
   "name": "rizal-web",
   "private": true,
-  "type": "module",
-  "engines": {
-    "node": ">=18.0.0"
-  },  "scripts": {
+  "type": "module",  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },"scripts": {
     "build": "react-router build",
     "build:vercel": "react-router build --mode=production",
     "dev": "cross-env NODE_OPTIONS=--experimental-vm-modules react-router dev",
