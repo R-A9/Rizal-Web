@@ -1,11 +1,36 @@
 import { Link } from "react-router";
 import { TypeAnimation } from 'react-type-animation';
 import { useEffect, useMemo, useCallback } from 'react';
+import { motion } from 'framer-motion';
 import Navbar from '../components/Navbar';
 import { classNames, imageUtils, perfUtils } from '../utils';
 
+// Animation variants
+const fadeIn = {
+  hidden: { opacity: 0, y: 20 },
+  show: { 
+    opacity: 1, 
+    y: 0,
+    transition: {
+      duration: 0.8,
+      ease: "easeOut"
+    }
+  }
+};
+
+const scaleUp = {
+  hidden: { scale: 0.95, opacity: 0 },
+  show: {
+    scale: 1,
+    opacity: 1,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut"
+    }
+  }
+};
+
 export function Welcome() {
-  // Memoized scroll handler
   const handleScrollToTop = useCallback(() => {
     perfUtils.scrollToTop();
   }, []);
@@ -27,7 +52,6 @@ export function Welcome() {
     return () => clearTimeout(timer);
   }, [handleScrollToTop]);
 
-  // Memoized image sources for better performance
   const imageSources = useMemo(() => ({
     heroBackground: '/images/rizal-bg.png',
     fullBackground: '/images/rizal-bg-full.png',
@@ -38,60 +62,101 @@ export function Welcome() {
     rizalQuestion: '/images/rizalquestion.png'
   }), []);
 
-   // For the smooth scroll effect of Explore button
-  const handleExploreClick = (e) => {
-    e.preventDefault();                              
-    document
-      .getElementById("explore")                    
-      ?.scrollIntoView({ behavior: "smooth" });     
-  };
-
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-amber-50">
       <Navbar />
 
       {/* Hero Section */}
-      <main className="min-h-screen bg-cover bg-center" style={{ backgroundImage: `url('${imageSources.heroBackground}')` }}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+      <motion.main 
+        initial="hidden"
+        animate="show"
+        className="min-h-screen bg-cover bg-center relative overflow-hidden"
+        style={{ backgroundImage: `url('${imageSources.heroBackground}')` }}
+      >
+        {/* Gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/10 to-black/30"></div>
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 relative z-10">
           <div className="grid md:grid-cols-2 gap-12 items-center">
-            {/* Empty div to maintain layout */}
-            <div className="hidden md:block"></div>
+            {/* Empty div with decorative element */}
+            <div className="hidden md:block relative">
+              <motion.div 
+                initial={{ opacity: 0, x: -50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.4, duration: 0.8 }}
+                className="absolute -left-20 top-1/2 transform -translate-y-1/2 w-32 h-32 border-4 border-amber-600/30 rounded-full"
+              ></motion.div>
+            </div>
 
             {/* Right side - Content */}
-            <div className="space-y-6">
-              <h1 className="text-5xl md:text-7xl font-bold text-gray-900 font-['Rosarivo'] italic">DR. JOSE RIZAL</h1>
-              <p className="text-xl text-amber-600">José Protacio Rizal Mercado y Alonzo Realonda</p>
-              <p className="text-lg text-gray-700 max-w-lg">
+            <motion.div 
+              variants={fadeIn}
+              className="space-y-6 text-white drop-shadow-lg"
+            >
+              <h1 className="text-5xl md:text-7xl font-bold font-['Rosarivo'] italic">
+                <TypeAnimation
+                  sequence={['DR. JOSE RIZAL']}
+                  wrapper="span"
+                  cursor={false}
+                  speed={50}
+                  style={{ display: 'inline-block' }}
+                />
+              </h1>
+              <motion.p 
+                variants={fadeIn}
+                transition={{ delay: 0.2 }}
+                className="text-xl text-amber-300"
+              >
+                José Protacio Rizal Mercado y Alonzo Realonda
+              </motion.p>
+              <motion.p 
+                variants={fadeIn}
+                transition={{ delay: 0.4 }}
+                className="text-lg max-w-lg leading-relaxed"
+              >
                 A Filipino nationalist, writer and polymath active at the end of the Spanish colonial period of the Philippines. He is considered one of the greatest heroes of the Philippines and is widely considered the greatest genius of the Malay race.
-              </p>
-              <div className="pt-4">
+              </motion.p>
+              <motion.div 
+                variants={fadeIn}
+                transition={{ delay: 0.6 }}
+                className="pt-4"
+              >
                 <Link 
-                  to="#explore" 
-                  onClick={handleExploreClick} // call out  the smooth scroll handler
-                  className="inline-flex items-center px-6 py-3 border-2 border-none 
-               text-base font-medium rounded-md text-[#4a2c11] bg-[#d4b98a]
-               hover:bg-[#4a2c11] hover:border-none hover:text-white
-      
-              transition-all duration-300 ease-in-out 
-              hover:scale-105 hover:shadow-xl hover:shadow-[#4a2c11]/50
-              hover:-translate-y-1"
+                  to="/about" 
+                  className="inline-flex items-center px-8 py-3 border-2 border-blue-700 text-base font-medium rounded-md text-white bg-blue-700 hover:bg-amber-600 md:py-4 md:text-lg md:px-10 transition-all duration-300 hover:shadow-lg hover:shadow-amber-500/30 transform hover:-translate-y-1"
                 >
                   EXPLORE
                 </Link>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           </div>
         </div>
-      </main>    
-        {/* RA 1425 Section */}
-        <section id="explore">
-      <section id="bgpic" className="relative min-h-screen flex items-center justify-center bg-cover bg-center" style={{backgroundImage: `url('${imageSources.fullBackground}')`}}>
+      </motion.main>
+
+      {/* RA 1425 Section */}
+      <motion.section 
+        id="bgpic" 
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, margin: "-100px" }}
+        className="relative min-h-screen flex items-center justify-center bg-cover bg-center bg-fixed"
+        style={{backgroundImage: `url('${imageSources.fullBackground}')`}}
+      >
+        {/* Dark overlay */}
+        <div className="absolute inset-0 bg-black/40"></div>
+        
         {/* Content */}
-        <div className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-8 lg:px-12">
+        <motion.div 
+          variants={scaleUp}
+          className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-8 lg:px-12"
+        >
           <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-start">
             {/* Left side - RA 1425 */}
-            <div className="w-full lg:w-1/2 text-white [text-shadow:_0_2px_8px_rgb(0_0_0_/_80%)] p-6 bg-black/30 backdrop-blur-sm rounded-xl">
-              <h2 className="text-2xl font-bold text-amber-300 mb-4 [text-shadow:_0_2px_4px_rgb(0_0_0_/_90%)]">
+            <motion.div 
+              whileHover={{ y: -5 }}
+              className="w-full lg:w-1/2 text-white p-6 bg-black/40 backdrop-blur-md rounded-xl border border-amber-600/30 shadow-xl"
+            >
+              <h2 className="text-2xl font-bold text-amber-300 mb-4">
                 <TypeAnimation
                   sequence={['Republic Act No. 1425']}
                   wrapper="span"
@@ -100,7 +165,7 @@ export function Welcome() {
                   style={{ display: 'inline-block' }}
                 />
               </h2>
-              <div className="mb-4 min-h-[100px] text-base leading-relaxed [text-shadow:_0_2px_4px_rgb(0_0_0_/_80%)]">
+              <div className="mb-4 min-h-[100px] text-base leading-relaxed">
                 <TypeAnimation
                   sequence={[
                     'An act to include in the curricula of all public and private schools, colleges and universities courses on the life, works and writings of Jose Rizal, particularly his novels Noli Me Tangere and El Filibusterismo, authorizing the printing and distribution thereof, and for other purposes.',
@@ -111,7 +176,7 @@ export function Welcome() {
                   style={{ whiteSpace: 'pre-line', display: 'block' }}
                 />
               </div>
-              <p className="text-sm text-amber-200 [text-shadow:_0_1px_3px_rgb(0_0_0_/_90%)]">
+              <p className="text-sm text-amber-200">
                 <TypeAnimation
                   sequence={['Approved on June 12, 1956']}
                   wrapper="span"
@@ -120,12 +185,16 @@ export function Welcome() {
                   style={{ display: 'inline-block' }}
                 />
               </p>
-            </div>
+            </motion.div>
 
             {/* Right side - CHED */}
-            <div className="w-full lg:w-1/2 [text-shadow:_0_2px_8px_rgb(0_0_0_/_80%)] p-6 bg-black/30 backdrop-blur-sm rounded-xl">
+            <motion.div 
+              whileHover={{ y: -5 }}
+              transition={{ delay: 0.1 }}
+              className="w-full lg:w-1/2 p-6 bg-black/40 backdrop-blur-md rounded-xl border border-amber-600/30 shadow-xl"
+            >
               <div className="flex items-center mb-4">
-                <h3 className="text-xl font-bold text-white [text-shadow:_0_2px_4px_rgb(0_0_0_/_90%)]">
+                <h3 className="text-xl font-bold text-white">
                   <TypeAnimation
                     sequence={['Commission on Higher Education']}
                     wrapper="span"
@@ -135,7 +204,7 @@ export function Welcome() {
                   />
                 </h3>
               </div>
-              <div className="min-h-[100px] text-base leading-relaxed [text-shadow:_0_2px_4px_rgb(0_0_0_/_80%)]">
+              <div className="min-h-[100px] text-base leading-relaxed">
                 <TypeAnimation
                   sequence={[
                     'This website is sponsored by the Commission on Higher Education (CHED) to help students understand the life, works, and writings of Dr. Jose Rizal, the national hero of the Philippines, and his significant contributions to Philippine history and national identity.',
@@ -146,86 +215,189 @@ export function Welcome() {
                   style={{ whiteSpace: 'pre-line', display: 'block' }}
                 />
               </div>
-            </div>
+            </motion.div>
           </div>
-        </div>
-        </section>
-      </section>
+        </motion.div>
+      </motion.section>
 
-      {/* Image Collage with Background */}
-      <section className="relative min-h-screen">
-        {/* Background Image */}
-        <div className="absolute inset-0 z-0">
-          <img 
-            src={imageSources.rizalQuestion}
-            alt="Jose Rizal Background"
-            className="w-full h-full object-cover"
-            loading="lazy"
-          />
-        </div>
-        
-        {/* Content Overlay */}
-        <div className="relative z-10 h-full flex flex-col md:flex-row">
-          {/* Left Container - Rizal */}
-          <div className="w-full md:w-1/3 h-screen flex items-center justify-center p-4">
-            <div className="transition-all duration-300 transform hover:scale-[1.02] hover:shadow-md hover:z-10">
-              <img 
-                src={imageSources.rizalSolo}
-                alt="Jose Rizal Portrait"
-                className="max-w-[80%] max-h-[80vh] object-contain transition-all duration-300"
-                loading="lazy"
-              />
-            </div>
-          </div>
+     {/* Image Collage with Hover-to-Text Effect */}
+<motion.section 
+  initial="hidden"
+  whileInView="show"
+  viewport={{ once: true }}
+  className="relative min-h-screen overflow-hidden"
+>
+  {/* Background Image */}
+  <div className="absolute inset-0 z-0">
+    <img 
+      src={imageSources.rizalQuestion}
+      alt="Jose Rizal Background"
+      className="w-full h-full object-cover"
+      loading="lazy"
+    />
+    <div className="absolute inset-0 bg-black/30"></div>
+  </div>
 
-          {/* Middle Container - Book */}
-          <div className="w-full md:w-1/3 h-screen flex items-center justify-center p-4">
-            <div className="relative -left-8 transition-all duration-300 transform hover:scale-[1.02] hover:shadow-md hover:z-10">
-              <img 
-                src={imageSources.book}
-                alt="Book"
-                className="max-w-full max-h-[90vh] object-contain transition-all duration-300"
-                loading="lazy"
-              />
-            </div>
-          </div>
+  {/* Title Section - "Did You Know?" */}
+  <motion.div 
+    variants={fadeIn}
+    className="relative z-10 pt-20 text-center"
+  >
+    <h2 className="text-4xl md:text-5xl font-bold text-amber-50 font-serif mb-4">
+      Did You Know?
+    </h2>
+    <div className="w-24 h-1 bg-amber-400 mx-auto mb-12"></div>
+  </motion.div>
+  
+  {/* Content Overlay */}
+  <motion.div 
+    variants={fadeIn}
+    className="relative z-10 h-full flex flex-col md:flex-row"
+  >
+    {/* Left Container - Rizal */}
+    <motion.div 
+      className="w-full md:w-1/3 h-[70vh] flex items-center justify-center p-4"
+      whileHover="hover"
+      initial="rest"
+    >
+      <div className="relative w-full h-full flex items-center justify-center">
+        {/* Image */}
+        <motion.img 
+          src={imageSources.rizalSolo}
+          alt="Jose Rizal Portrait"
+          className="absolute max-w-[80%] max-h-[80%] object-contain cursor-pointer"
+          loading="lazy"
+          variants={{
+            rest: { opacity: 1, scale: 1 },
+            hover: { opacity: 0, scale: 0.95 }
+          }}
+          transition={{ duration: 0.3 }}
+        />
+        {/* Text Content */}
+        <motion.div
+          className="absolute bg-amber-100/90 p-8 rounded-lg max-w-[80%] border-2 border-amber-800 shadow-lg cursor-pointer"
+          variants={{
+            rest: { opacity: 0, y: 20 },
+            hover: { opacity: 1, y: 0 }
+          }}
+          transition={{ duration: 0.3 }}
+        >
+          <h3 className="text-2xl font-bold text-amber-900 mb-2 font-serif">José Rizal</h3>
+          <p className="text-amber-800">
+            Jose Rizal is a Multilingual, Rizal was a hyperpolyglot, speaking and writing in 22 languages, including Spanish, French, German, Greek, and Latin. 
+          </p>
+        </motion.div>
+      </div>
+    </motion.div>
 
-          {/* Right Container - Fight */}
-          <div className="w-full md:w-1/3 h-screen flex items-center justify-center p-4">
-            <div className="transition-all duration-300 transform hover:scale-[1.02] hover:shadow-md hover:z-10">
-              <img 
-                src={imageSources.fight}
-                alt="Fight"
-                className="max-w-full max-h-[90vh] object-contain transition-all duration-300"
-                loading="lazy"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
+    {/* Middle Container - Book */}
+    <motion.div 
+      className="w-full md:w-1/3 h-[70vh] flex items-center justify-center p-4"
+      whileHover="hover"
+      initial="rest"
+    >
+      <div className="relative w-full h-full flex items-center justify-center">
+        {/* Image */}
+        <motion.img 
+          src={imageSources.book}
+          alt="Noli Me Tangere Book"
+          className="absolute max-w-[80%] max-h-[80%] object-contain cursor-pointer"
+          loading="lazy"
+          variants={{
+            rest: { opacity: 1, scale: 1 },
+            hover: { opacity: 0, scale: 0.95 }
+          }}
+          transition={{ duration: 0.3 }}
+        />
+        {/* Text Content */}
+        <motion.div
+          className="absolute bg-amber-100/90 p-8 rounded-lg max-w-[80%] border-2 border-amber-800 shadow-lg cursor-pointer"
+          variants={{
+            rest: { opacity: 0, y: 20 },
+            hover: { opacity: 1, y: 0 }
+          }}
+          transition={{ duration: 0.3 }}
+        >
+          <h3 className="text-2xl font-bold text-amber-900 mb-2 font-serif">Unifinished Novel</h3>
+          <p className="text-amber-800">
+            Rizal had Noli Me tangere and El filibusterismo, but rizal had a third, unfinished novel.
+          </p>
+        </motion.div>
+      </div>
+    </motion.div>
+
+    {/* Right Container - Fight */}
+    <motion.div 
+      className="w-full md:w-1/3 h-[70vh] flex items-center justify-center p-4"
+      whileHover="hover"
+      initial="rest"
+    >
+      <div className="relative w-full h-full flex items-center justify-center">
+        {/* Image */}
+        <motion.img 
+          src={imageSources.fight}
+          alt="Philippine Revolution"
+          className="absolute max-w-[80%] max-h-[80%] object-contain cursor-pointer"
+          loading="lazy"
+          variants={{
+            rest: { opacity: 1, scale: 1 },
+            hover: { opacity: 0, scale: 0.95 }
+          }}
+          transition={{ duration: 0.3 }}
+        />
+        {/* Text Content */}
+        <motion.div
+          className="absolute bg-amber-100/90 p-8 rounded-lg max-w-[80%] border-2 border-amber-800 shadow-lg cursor-pointer"
+          variants={{
+            rest: { opacity: 0, y: 20 },
+            hover: { opacity: 1, y: 0 }
+          }}
+          transition={{ duration: 0.3 }}
+        >
+          <h3 className="text-2xl font-bold text-amber-900 mb-2 font-serif">Luna And Rizal</h3>
+          <p className="text-amber-800">
+            General Luna and Jose Rizal almost killed each other because of the same woman. Rizal challenged Luna to a duel but it was also interrupted because they were separated.
+          </p>
+        </motion.div>
+      </div>
+    </motion.div>
+  </motion.div>
+</motion.section>
 
       {/* Genially Interactive Content */}
-      <div className="w-full py-16 px-4 relative" style={{
-        backgroundImage: `url(${imageSources.quizBackground})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat'
-      }}>
-        <div className="absolute inset-0 bg-black/30 -z-10"></div>
-        <div className="max-w-5xl mx-auto relative">
-          <h2 className="text-3xl font-bold text-center mb-8 text-black font-serif drop-shadow-md">Do You Know Rizal?</h2>
-          <div className="w-full bg-white/90 p-4 rounded-lg shadow-xl">
-            <div className="relative pb-[56.25%] pt-0 h-0">              <iframe 
+      <motion.div 
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true }}
+        className="w-full py-16 px-4 relative overflow-hidden"
+        style={{
+          backgroundImage: `url(${imageSources.quizBackground})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundAttachment: 'fixed'
+        }}
+      >
+        <div className="absolute inset-0 bg-black/40 -z-10"></div>
+        <motion.div 
+          variants={scaleUp}
+          className="max-w-5xl mx-auto relative"
+        >
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-8 text-white font-serif drop-shadow-lg">
+            Do You Know Rizal?
+          </h2>
+          <div className="w-full bg-white/90 p-4 rounded-lg shadow-2xl backdrop-blur-sm">
+            <div className="relative pb-[56.25%] pt-0 h-0">
+              <iframe 
                 title="Do you know Rizal?"
-                className="absolute top-0 left-0 w-full h-full border-0"
+                className="absolute top-0 left-0 w-full h-full border-0 rounded-md"
                 src="https://view.genial.ly/658196a63efd51001456a7b0"
                 allowFullScreen
                 loading="lazy"
               />
             </div>
           </div>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </div>
   );
 }
