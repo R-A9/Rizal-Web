@@ -66,7 +66,7 @@ export function Welcome() {
               </p>
               <div className="pt-4">
                 <Link 
-                  to="#explore" 
+                  to="explore" 
                   onClick={handleExploreClick} // call out  the smooth scroll handler
                   className="inline-flex items-center px-6 py-3 border-2 border-none 
                text-base font-medium rounded-md text-[#4a2c11] bg-[#d4b98a]
